@@ -32,6 +32,7 @@ dev_dependencies:
   # School logo upload এর জন্য
   image_picker:
   easy_stepper: ^1.0.1
+  country_picker_pro: ^0.0.5
 
   flutter_lints: ^6.0.0
 
@@ -40,7 +41,13 @@ flutter:
 
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/image/background/background_image.png
+    - assets/image/onbording/
+    - assets/image/onbording/one_screen.png
+    - assets/image/onbording/one_screen (2).png
+    - assets/image/onbording/reboto.png
+    - assets/image/auth/juno_86.png
+    - assets/image/auth/
+
 
