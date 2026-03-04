@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:lifenest/app/routes/routes_name.dart';
 
 class SelectCountryController extends GetxController {
   final selectedName = 'United States'.obs;
@@ -9,5 +10,10 @@ class SelectCountryController extends GetxController {
     selectedName.value = name;
     selectedCode.value = code;
     selectedFlagEmoji.value = flagEmoji;
+  }
+
+  void next(){
+
+    Get.toNamed(RoutesName.currentMood);
   }
 }

@@ -193,7 +193,9 @@ class Loginpage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(6.r),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(RoutesName.home);
+                    },
                     child: Text("Sign In", style: AppTextStyle.mango50014signIn),
                   ),
                 ),

@@ -3,13 +3,19 @@ import 'package:lifenest/app/feature/Onboarding/screen/Onboarding_one.dart';
 import 'package:lifenest/app/feature/Onboarding/screen/Onboarding_three.dart';
 import 'package:lifenest/app/feature/Onboarding/screen/Onboarding_two.dart';
 import 'package:lifenest/app/feature/auth/screens/CountryPicker.dart';
+import 'package:lifenest/app/feature/auth/screens/CurrentMoodPage_0ne.dart';
+import 'package:lifenest/app/feature/auth/screens/CurrentMoodPage_three.dart';
+import 'package:lifenest/app/feature/auth/screens/CurrentMoodPage_two.dart';
 import 'package:lifenest/app/feature/auth/screens/Forgot_Password.dart';
 import 'package:lifenest/app/feature/auth/screens/LoginPage.dart';
 import 'package:lifenest/app/feature/auth/screens/RegisterPage.dart';
 import 'package:lifenest/app/feature/auth/screens/gender.dart';
+import 'package:lifenest/app/feature/chatbot/screens/chatbot.dart';
+import 'package:lifenest/app/feature/home/screens/home.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
 import '../feature/Onboarding/screen/onboarding_view.dart';
+import '../feature/auth/screens/currrentMoodPage_four.dart';
 
 class RoutesPage {
   static final List<GetPage> pages = [
@@ -57,8 +63,42 @@ class RoutesPage {
     ),
     GetPage(
       name: RoutesName.country,
-      page: () =>  SelectCountryScreen(),
+      page: () => SelectCountryScreen(),
       transition: Transition.fadeIn,
     ),
+    GetPage(
+      name: RoutesName.currentMood,
+      page: () => Currentmoodpage0ne(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: RoutesName.currentMood_two,
+      page: () => CurrentMoodPageTwo(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: RoutesName.currentMood_three,
+      page: () => CurrentmoodpageThree(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: RoutesName.currentMood_foure,
+      page: () => CurrrentmoodpageFour(),
+      transition: Transition.fadeIn,
+    ),
+       //home
+    GetPage(
+      name: RoutesName.home,
+      page: () => Home(),
+      transition: Transition.fadeIn,
+    ),
+
+    GetPage(
+      name: RoutesName.chatbot,
+      page: () => Chatbot(),
+      transition: Transition.fadeIn,
+    ),
+
+
   ];
 }
