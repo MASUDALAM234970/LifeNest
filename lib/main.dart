@@ -32,14 +32,11 @@ class MyApp extends StatelessWidget {
           child: GetMaterialApp(
             title: "Lifenest",
             debugShowCheckedModeBanner: false,
-              initialRoute: RoutesName.onboarding,
+            initialRoute: RoutesName.onboarding,
             getPages: RoutesPage.pages,
             initialBinding: AppBinding(),
 
-            // ✅ this makes all Scaffold background transparent
-            theme: ThemeData(
-              scaffoldBackgroundColor: Colors.transparent,
-            ),
+            theme: ThemeData(scaffoldBackgroundColor: Colors.transparent),
           ),
         );
       },
