@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           child: GetMaterialApp(
             title: "Lifenest",
             debugShowCheckedModeBanner: false,
-            initialRoute: RoutesName.onboarding,
+            initialRoute: RoutesName.home,
             getPages: RoutesPage.pages,
             initialBinding: AppBinding(),
 
