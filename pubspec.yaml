@@ -63,5 +63,6 @@ flutter:
     - assets/image/home/
     - assets/image/home/profile.png
     - assets/image/home/daily.png
+    - assets/image/feature/feature_01.png
 
 

@@ -2,18 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:lifenest/app/constant/AppTextStyle.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
+import 'package:lifenest/app/feature/home/screens/Feature.dart';
 
 import '../../../constant/AppTextStyle.dart';
 import '../../../routes/routes_name.dart';
 import '../controller/HomeController.dart';
 
-
-
-class Home extends GetView< Homecontroller> {
+class Home extends GetView<Homecontroller> {
   Home({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +104,12 @@ class Home extends GetView< Homecontroller> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
-                      child: Image.asset("assets/image/home/journal.png"),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(() => Feature());
+                        },
+                        child: Image.asset("assets/image/home/journal.png"),
+                      ),
                     ),
                   ),
                   SizedBox(width: 15.w),
@@ -193,9 +194,9 @@ class Home extends GetView< Homecontroller> {
         padding: EdgeInsets.all(10.w),
         decoration: isActive
             ? BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30.r),
-        )
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30.r),
+              )
             : null,
         child: Icon(
           icon,
@@ -209,7 +210,6 @@ class Home extends GetView< Homecontroller> {
   void _onNavTap(int index) {
     controller.changeIndex(index);
 
-
     switch (index) {
       case 0:
         Get.offAllNamed(RoutesName.home);
@@ -217,7 +217,8 @@ class Home extends GetView< Homecontroller> {
       case 1:
         //Get.offAllNamed(RoutesName.book);
         break;
-      case 2:Get.offAllNamed(RoutesName.chatbot);
+      case 2:
+        Get.offAllNamed(RoutesName.chatbot);
         break;
       case 3:
         //Get.offAllNamed(RoutesName.profile);
