@@ -12,6 +12,7 @@ import 'package:lifenest/app/feature/auth/screens/RegisterPage.dart';
 import 'package:lifenest/app/feature/auth/screens/gender.dart';
 import 'package:lifenest/app/feature/chatbot/screens/chatbot.dart';
 import 'package:lifenest/app/feature/home/screens/home.dart';
+import 'package:lifenest/app/feature/mind/screens/MindTools.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
 import '../feature/Onboarding/screen/onboarding_view.dart';
@@ -96,6 +97,12 @@ class RoutesPage {
     GetPage(
       name: RoutesName.chatbot,
       page: () => Chatbot(),
+      transition: Transition.fadeIn,
+    ),
+
+    GetPage(
+      name: RoutesName.mindtools,
+      page: () => Mindtools(),
       transition: Transition.fadeIn,
     ),
 

@@ -18,4 +18,7 @@ class RoutesName {
   //home
   static const String home = '/home';
   static const String chatbot = '/chatbot';
+
+  //mindTools
+  static const String mindtools = "/mindtools";
 }
