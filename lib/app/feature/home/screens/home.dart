@@ -3,7 +3,7 @@ import 'package:lifenest/app/constant/AppTextStyle.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/feature/home/screens/Feature.dart';
-import 'package:lifenest/app/feature/home/screens/MindTools.dart';
+
 import 'package:lifenest/app/feature/home/screens/sos.dart';
 
 import '../../../constant/AppTextStyle.dart';

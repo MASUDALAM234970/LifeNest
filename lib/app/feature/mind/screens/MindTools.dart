@@ -1,0 +1,63 @@
+import 'package:flutter/material.dart';
+import 'package:lifenest/app/feature/home/controller/HomeController.dart';
+import '../../../constant/AppTextStyle.dart';
+import 'package:get/get.dart';
+import '../../home/screens/helper.dart';
+class Mindtools extends GetView<Homecontroller> {
+  const Mindtools({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: Image.asset("assets/image/arrow/arrow.png"),
+        ),
+
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text("Mind Tools", style: AppTextStyle.mango70018cur),
+        centerTitle: true,
+        // centerTitle: true,
+      ),
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            FeatureCard(
+              image: "assets/image/mindtools/mind_1.png",
+              title: "Breathing Timer",
+              subtitle:
+                  "Sync your breath with a calming \nanimation.",
+              onTap: () => Get.to(() => const Mindtools()),
+            ),
+
+            FeatureCard(
+              image: "assets/image/mindtools/mind_2.png",
+              title: "5-4-3-2-1 Grounding",
+              subtitle:
+              "Sync your breath with a calming \nanimation.",
+              onTap: () => Get.to(() => const Mindtools()),
+            ),
+
+            FeatureCard(
+              image: "assets/image/mindtools/mind_3.png",
+              title: "Mirror Talk",
+              subtitle:
+                  "Practice self-compassion with a guided\nscript.",
+              onTap: () => Get.to(() => const Mindtools()),
+            ),
+            FeatureCard(
+              image: "assets/image/mindtools/mind_4.png",
+              title: "Music Therapy",
+              subtitle:
+                  "Practice self-compassion with a guided\nscript.",
+              onTap: () => Get.to(() => const Mindtools()),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
