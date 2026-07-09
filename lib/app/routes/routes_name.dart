@@ -21,4 +21,5 @@ class RoutesName {
 
   //mindTools
   static const String mindtools = "/mindtools";
+  static const String Breathing= "/Breathing ";
 }

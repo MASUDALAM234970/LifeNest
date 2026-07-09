@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
+import 'package:lifenest/app/feature/mind/screens/GroundingScree.dart';
 import '../../../constant/AppTextStyle.dart';
 import 'package:get/get.dart';
+import '../../../routes/routes_name.dart';
 import '../../home/screens/helper.dart';
+import 'BreathingScreen.dart';
 class Mindtools extends GetView<Homecontroller> {
   const Mindtools({super.key});
 
@@ -30,7 +33,8 @@ class Mindtools extends GetView<Homecontroller> {
               title: "Breathing Timer",
               subtitle:
                   "Sync your breath with a calming \nanimation.",
-              onTap: () => Get.to(() => const Mindtools()),
+            //  onTap: () => Get.toNamed(RoutesName.Breathing),
+              onTap: () => Get.to(() => const BreathingScreen()),
             ),
 
             FeatureCard(
@@ -38,7 +42,7 @@ class Mindtools extends GetView<Homecontroller> {
               title: "5-4-3-2-1 Grounding",
               subtitle:
               "Sync your breath with a calming \nanimation.",
-              onTap: () => Get.to(() => const Mindtools()),
+              onTap: () => Get.to(() => GroundingScreen()),
             ),
 
             FeatureCard(
