@@ -3,6 +3,8 @@ import 'package:lifenest/app/constant/AppTextStyle.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/feature/home/screens/Feature.dart';
+import 'package:lifenest/app/feature/home/screens/MindTools.dart';
+import 'package:lifenest/app/feature/home/screens/sos.dart';
 
 import '../../../constant/AppTextStyle.dart';
 import '../../../routes/routes_name.dart';
@@ -129,14 +131,19 @@ class Home extends GetView<Homecontroller> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
-                      child: Image.asset("assets/image/home/journal.png"),
+                      child: GestureDetector(
+
+                          onTap: () {
+                            Get.to(() => Sos());
+                          },
+                          child: Image.asset("assets/image/home/sos.png")),
                     ),
                   ),
                   SizedBox(width: 15.w),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(right: 10),
-                      child: Image.asset("assets/image/home/spiritual.png"),
+                      child: Image.asset("assets/image/home/ai_coach.png"),
                     ),
                   ),
                 ],

@@ -1,24 +1,19 @@
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lifenest/app/feature/home/controller/HomeController.dart';
 
 import '../../../constant/AppTextStyle.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'helper.dart';
 
-class Feature extends GetView<Homecontroller> {
-  const Feature({super.key});
+class Mindtools extends StatelessWidget {
+  const Mindtools({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => Get.back(),
-          icon: Image.asset(
-            "assets/image/arrow/arrow.png",
-          ),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Image.asset("assets/image/arrow/arrow.png"),
         ),
 
         backgroundColor: Colors.transparent,
@@ -57,22 +52,22 @@ class Feature extends GetView<Homecontroller> {
               subtitle:
               "Record your thoughts, get AI-powered\ninsights, and chat with your coach.",
             ),
-        
+
             FeatureCard(
               image: "assets/image/feature/feature_05.png",
               title: "Mind Tools",
               subtitle:
               "Quick, interactive tools to help you\nground and recenter.",
             ),
-        
+
             FeatureCard(
               image: "assets/image/feature/feature_06.png",
               title: "Reminder",
               subtitle:
               "Receive a notification for your daily\ncheck-in.",
             ),
-        
-        
+
+
           ],
         ),
       ),
