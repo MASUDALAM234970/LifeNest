@@ -132,11 +132,11 @@ class Home extends GetView<Homecontroller> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: GestureDetector(
-
-                          onTap: () {
-                            Get.to(() => Sos());
-                          },
-                          child: Image.asset("assets/image/home/sos.png")),
+                        onTap: () {
+                          Get.to(() => Sos());
+                        },
+                        child: Image.asset("assets/image/home/sos.png"),
+                      ),
                     ),
                   ),
                   SizedBox(width: 15.w),
@@ -228,7 +228,7 @@ class Home extends GetView<Homecontroller> {
         Get.offAllNamed(RoutesName.chatbot);
         break;
       case 3:
-        //Get.offAllNamed(RoutesName.profile);
+        Get.offAllNamed(RoutesName.profile);
         break;
     }
   }

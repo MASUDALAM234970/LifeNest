@@ -11,6 +11,7 @@ import 'package:lifenest/app/feature/auth/screens/LoginPage.dart';
 import 'package:lifenest/app/feature/auth/screens/RegisterPage.dart';
 import 'package:lifenest/app/feature/auth/screens/gender.dart';
 import 'package:lifenest/app/feature/chatbot/screens/chatbot.dart';
+import 'package:lifenest/app/feature/home/screens/ProfileScreen.dart';
 import 'package:lifenest/app/feature/home/screens/home.dart';
 import 'package:lifenest/app/feature/mind/screens/BreathingScreen.dart';
 import 'package:lifenest/app/feature/mind/screens/MindTools.dart';
@@ -110,6 +111,11 @@ class RoutesPage {
     GetPage(
       name: RoutesName.Breathing,
       page: () => BreathingScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: RoutesName.profile,
+      page: () => ProfileScreen(),
       transition: Transition.fadeIn,
     ),
 
