@@ -1,10 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:lifenest/app/feature/mind/screens/finished.dart';
 
 import '../../../constant/AppTextStyle.dart';
+import 'helpers.dart';
+import 'package:get/get.dart';
 
-class GroundingScreen extends StatelessWidget {
+class GroundingScreen extends StatefulWidget {
   const GroundingScreen({super.key});
+
+  @override
+  State<GroundingScreen> createState() => _GroundingScreenState();
+}
+
+class _GroundingScreenState extends State<GroundingScreen> {
+  final PageController _pageController = PageController();
+
+  int currentPage = 0;
+
+  final List<Widget> pages = const [Page1(), Page2(), Page3(), Page4()];
+
+  void nextPage() {
+    if (currentPage < pages.length - 1) {
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      // Last page
+       Get.to(()=>Finished());
+
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +43,6 @@ class GroundingScreen extends StatelessWidget {
             icon: Image.asset("assets/image/arrow/arrow.png"),
           ),
         ),
-
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text("5-4-3-2-1 Grounding", style: AppTextStyle.mango70016sos),
@@ -30,8 +55,41 @@ class GroundingScreen extends StatelessWidget {
           ),
         ],
       ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                physics: const NeverScrollableScrollPhysics(),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentPage = index;
+                  });
+                },
+                children: pages,
+              ),
+            ),
 
-      body: Column(children: []),
+            SizedBox(
+              width: 336,
+              height: 44,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff3C83F6),
+                  foregroundColor: Color(0xffFAFAFA),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+                onPressed: nextPage,
+                child: Text("Next", style: AppTextStyle.mango50014signIn),
+              ),
+            ),
+            SizedBox(height: 40),
+          ],
+        ),
+      ),
     );
   }
 }
