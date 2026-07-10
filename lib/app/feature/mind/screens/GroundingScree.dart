@@ -51,7 +51,7 @@ class _GroundingScreenState extends State<GroundingScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),
-            child: Image.asset("assets/image/arrow/arrow.png"),
+            child: Image.asset("assets/image/arrow/cross.png"),
           ),
         ],
       ),

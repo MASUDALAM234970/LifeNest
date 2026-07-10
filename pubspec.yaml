@@ -33,8 +33,9 @@ dev_dependencies:
   image_picker:
   easy_stepper: ^1.0.1
   country_picker_pro: ^0.0.5
-
   flutter_lints: ^6.0.0
+  flutter_tts: ^4.0.2
+  speech_to_text: ^7.0.0
 
   flutter_launcher_icons:
 flutter_icons:
