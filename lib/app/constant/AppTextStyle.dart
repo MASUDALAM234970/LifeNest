@@ -74,6 +74,7 @@ class AppTextStyle {
     fontWeight: FontWeight.w500,
     color: const Color(0xccffffff),
   );
+
   static TextStyle get mango50012singup => GoogleFonts.manrope(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
@@ -85,86 +86,95 @@ class AppTextStyle {
     fontWeight: FontWeight.w700,
     color: const Color(0xffFAFAFA),
   );
+
   static TextStyle get mango700214mf => GoogleFonts.manrope(
     fontSize: 14.sp,
     fontWeight: FontWeight.w700,
     color: const Color(0xffFAFAFA),
   );
+
   static TextStyle get mango70018cur => GoogleFonts.manrope(
     fontSize: 18.sp,
     fontWeight: FontWeight.w700,
     color: const Color(0xffFAFAFA),
-    fontStyle: FontStyle.italic
+    fontStyle: FontStyle.italic,
   );
+
   static TextStyle get mango60026home => GoogleFonts.manrope(
-      fontSize: 20.sp,
-      fontWeight: FontWeight.w600,
-      color: const Color(0xffFAFAFA),
-
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+    color: const Color(0xffFAFAFA),
   );
+
   static TextStyle get mango40016_selection => GoogleFonts.manrope(
-      fontSize: 16.sp,
-      fontWeight: FontWeight.w400,
-      color: const Color(0x99fafafa),
-
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: const Color(0x99fafafa),
   );
+
   static TextStyle get mango60016goo => GoogleFonts.manrope(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: const Color(0xFFFFFFFF),
-
   );
+
   static TextStyle get mango60016name => GoogleFonts.manrope(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: const Color(0x99fafafa),
-
   );
 
   static TextStyle get mango70014aui => GoogleFonts.manrope(
     fontSize: 14.sp,
     fontWeight: FontWeight.w700,
     color: const Color(0x99fafafa),
-
   );
+
   static TextStyle get mango40012views => GoogleFonts.manrope(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     color: const Color(0xccfafafa),
-
   );
 
   static TextStyle get mango40012feature => GoogleFonts.manrope(
     fontSize: 11.sp,
     fontWeight: FontWeight.w400,
     color: const Color(0x99ffffff),
-
   );
-
 
   static TextStyle get mango70014sos => GoogleFonts.manrope(
     fontSize: 14.sp,
     fontWeight: FontWeight.w700,
     color: const Color(0xffFAFAFA),
-
   );
+
   static TextStyle get mango70016sos => GoogleFonts.manrope(
     fontSize: 16.sp,
     fontWeight: FontWeight.w700,
     color: const Color(0xffFAFAFA),
-
   );
 
   static TextStyle get mango50012sos => GoogleFonts.manrope(
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
     color: const Color(0x99ffffff),
-
   );
 
   static TextStyle get mango40014breath => GoogleFonts.manrope(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
     color: const Color(0x66ffffff),
+  );
+
+  static TextStyle get mango500143C83F6 => GoogleFonts.manrope(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: const Color(0xff3C83F6),
+  );
+
+  static TextStyle get mango50014FAFAFA => GoogleFonts.manrope(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: const Color(0xffFAFAFA),
   );
 }
