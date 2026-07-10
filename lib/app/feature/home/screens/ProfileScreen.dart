@@ -436,7 +436,7 @@ class _SettingsTile extends StatelessWidget {
                   label,
                   style: TextStyle(
                     color: color,
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
