@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
 import 'package:lifenest/app/feature/mind/screens/GroundingScree.dart';
+import 'package:lifenest/app/feature/mind/screens/MirrorTalkScreen.dart';
 import '../../../constant/AppTextStyle.dart';
 import 'package:get/get.dart';
 import '../../../routes/routes_name.dart';
@@ -50,7 +51,7 @@ class Mindtools extends GetView<Homecontroller> {
               title: "Mirror Talk",
               subtitle:
                   "Practice self-compassion with a guided\nscript.",
-              onTap: () => Get.to(() => const Mindtools()),
+              onTap: () => Get.to(() => const MirrorTalkScreen()),
             ),
             FeatureCard(
               image: "assets/image/mindtools/mind_4.png",
