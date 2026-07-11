@@ -69,7 +69,7 @@ class CustomBottomNavBar extends StatelessWidget {
         break;
 
       case 1:
-        //  Get.offAllNamed(RoutesName.book);
+        Get.offAllNamed(RoutesName.journal);
         break;
 
       case 2:
