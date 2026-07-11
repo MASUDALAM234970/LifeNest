@@ -9,6 +9,7 @@ import 'package:lifenest/app/feature/home/screens/sos.dart';
 import '../../../constant/AppTextStyle.dart';
 import '../../../routes/routes_name.dart';
 import '../controller/HomeController.dart';
+import 'CustomBottomNavBar.dart';
 
 class Home extends GetView<Homecontroller> {
   Home({super.key});
@@ -158,78 +159,15 @@ class Home extends GetView<Homecontroller> {
       ),
 
       /// ✅ Bottom Nav (GetX)
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(bottom: 20.h, left: 20.w, right: 20.w),
-        child: Container(
-          height: 65.h,
-          decoration: BoxDecoration(
-            color: const Color(0xFF2B0063),
-            borderRadius: BorderRadius.circular(40.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.25),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Obx(() {
-            final current = controller.currentIndex.value;
 
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _navItem(Icons.home, 0, current),
-                _navItem(Icons.menu_book_outlined, 1, current),
-                _navItem(Icons.grid_view_outlined, 2, current),
-                _navItem(Icons.person_outline, 3, current),
-              ],
-            );
-          }),
-        ),
-      ),
+       bottomNavigationBar: const CustomBottomNavBar(
+           currentIndex: 0,
+         ),
+
     );
   }
 
-  Widget _navItem(IconData icon, int index, int current) {
-    final isActive = current == index;
 
-    return GestureDetector(
-      onTap: () => _onNavTap(index),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.all(10.w),
-        decoration: isActive
-            ? BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30.r),
-              )
-            : null,
-        child: Icon(
-          icon,
-          color: isActive ? Colors.black : Colors.white,
-          size: 24.sp,
-        ),
-      ),
-    );
-  }
 
-  void _onNavTap(int index) {
-    controller.changeIndex(index);
 
-    switch (index) {
-      case 0:
-        Get.offAllNamed(RoutesName.home);
-        break;
-      case 1:
-        //Get.offAllNamed(RoutesName.book);
-        break;
-      case 2:
-        Get.offAllNamed(RoutesName.chatbot);
-        break;
-      case 3:
-        Get.offAllNamed(RoutesName.profile);
-        break;
-    }
-  }
 }

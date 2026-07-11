@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../home/screens/CustomBottomNavBar.dart';
 class Chatbot extends StatelessWidget {
   const Chatbot({super.key});
 
@@ -65,6 +67,15 @@ class Chatbot extends StatelessWidget {
           ],),
         ),
       ),
+
+      /// ✅ Bottom Nav (GetX)
+
+      bottomNavigationBar: const CustomBottomNavBar(
+        currentIndex: 2,
+      ),
     );
+
+
   }
+
 }
