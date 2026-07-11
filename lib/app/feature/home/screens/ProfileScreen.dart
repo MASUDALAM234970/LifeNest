@@ -1,21 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
+import 'CustomBottomNavBar.dart';
 
-import '../../../routes/routes_name.dart';
-
-// ProfileController and RoutesName are defined at the bottom of this file
-// as stubs. If you already have your own versions in your project, delete
-// the stubs below and import your real files instead, e.g.:
-// import '../routes/routes_name.dart';
-// import 'profile_controller.dart';
-
-/// Profile screen — same-to-same UI as the reference design:
-/// gradient background, back button + title, profile card with avatar
-/// and "Edit Profile" button, 3 stat cards, weekly mood journey strip,
-/// settings list (Notifications / Privacy & Legal / Logout), and a
-/// floating GetX-driven bottom nav bar (Home / Journal / Chatbot / Profile).
 class ProfileScreen extends GetView<Homecontroller> {
   final String name;
   final String avatarUrl; // network/asset image path for the avatar
@@ -38,9 +25,7 @@ class ProfileScreen extends GetView<Homecontroller> {
     this.todayIndex = 4,
   });
 
-  // GetX controller that tracks which bottom-nav tab is active.
-  // Make sure ProfileController is put() somewhere above this screen
-  // (e.g. via Get.put/Get.lazyPut in a binding), same as your other screens.
+
   Homecontroller get controller => Get.find<Homecontroller>();
 
   static const List<String> _dayLabels = [
@@ -50,7 +35,7 @@ class ProfileScreen extends GetView<Homecontroller> {
     'Wed',
     'Thu',
     'Fri',
-    'Sat'
+    'Sat',
   ];
 
   @override
@@ -104,8 +89,11 @@ class ProfileScreen extends GetView<Homecontroller> {
                           ? NetworkImage(avatarUrl)
                           : null,
                       child: avatarUrl.isEmpty
-                          ? const Icon(Icons.person,
-                          color: Colors.white, size: 32)
+                          ? const Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 32,
+                            )
                           : null,
                     ),
                     const SizedBox(width: 16),
@@ -121,7 +109,9 @@ class ProfileScreen extends GetView<Homecontroller> {
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 10),
+                        horizontal: 14,
+                        vertical: 10,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.15),
                         borderRadius: BorderRadius.circular(10),
@@ -174,7 +164,9 @@ class ProfileScreen extends GetView<Homecontroller> {
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(
-                    vertical: 20, horizontal: 12),
+                  vertical: 20,
+                  horizontal: 12,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(20),
@@ -232,79 +224,8 @@ class ProfileScreen extends GetView<Homecontroller> {
       ),
 
       /// ✅ Bottom Nav (GetX)
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(bottom: 20.h, left: 20.w, right: 20.w),
-        child: Container(
-          height: 65.h,
-          decoration: BoxDecoration(
-            color: const Color(0xFF2B0063),
-            borderRadius: BorderRadius.circular(40.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.25),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
-          ),
-          child: Obx(() {
-            final current = controller.currentIndex.value;
-
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _navItem(Icons.home, 0, current),
-                _navItem(Icons.menu_book_outlined, 1, current),
-                _navItem(Icons.grid_view_outlined, 2, current),
-                _navItem(Icons.person_outline, 3, current),
-              ],
-            );
-          }),
-        ),
-      ),
+      bottomNavigationBar: const CustomBottomNavBar(currentIndex: 3),
     );
-  }
-
-  Widget _navItem(IconData icon, int index, int current) {
-    final isActive = current == index;
-
-    return GestureDetector(
-      onTap: () => _onNavTap(index),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.all(10.w),
-        decoration: isActive
-            ? BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30.r),
-        )
-            : null,
-        child: Icon(
-          icon,
-          color: isActive ? Colors.black : Colors.white,
-          size: 24.sp,
-        ),
-      ),
-    );
-  }
-
-  void _onNavTap(int index) {
-    controller.changeIndex(index);
-
-    switch (index) {
-      case 0:
-        Get.offAllNamed(RoutesName.home);
-        break;
-      case 1:
-      // Get.offAllNamed(RoutesName.book);
-        break;
-      case 2:
-        Get.offAllNamed(RoutesName.chatbot);
-        break;
-      case 3:
-        Get.offAllNamed(RoutesName.profile);
-        break;
-    }
   }
 }
 
@@ -441,7 +362,11 @@ class _SettingsTile extends StatelessWidget {
                   ),
                 ),
               ),
-              Icon(Icons.chevron_right, color: color.withOpacity(0.6), size: 20),
+              Icon(
+                Icons.chevron_right,
+                color: color.withOpacity(0.6),
+                size: 20,
+              ),
             ],
           ),
         ),
@@ -474,7 +399,6 @@ class _CircleIconButton extends StatelessWidget {
   }
 }
 
-
 class ProfileController extends GetxController {
   final currentIndex = 3.obs; // Profile tab is index 3 / active by default
 
@@ -483,10 +407,4 @@ class ProfileController extends GetxController {
   }
 }
 
-/// Route name stubs — replace with your actual RoutesName class/values.
-// class RoutesName {
-//   static const String home = '/home';
-//   static const String book = '/book';
-//   static const String chatbot = '/chatbot';
-//   static const String profile = '/profile';
-// }
+
