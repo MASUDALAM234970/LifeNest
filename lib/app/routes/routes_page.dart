@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:lifenest/app/feature/journal/screens/JournalScreen.dart';
 import 'package:lifenest/app/feature/Onboarding/screen/Onboarding_one.dart';
 import 'package:lifenest/app/feature/Onboarding/screen/Onboarding_three.dart';
 import 'package:lifenest/app/feature/Onboarding/screen/Onboarding_two.dart';
@@ -89,7 +90,7 @@ class RoutesPage {
       page: () => CurrrentmoodpageFour(),
       transition: Transition.fadeIn,
     ),
-       //home
+    //home
     GetPage(
       name: RoutesName.home,
       page: () => Home(),
@@ -113,12 +114,17 @@ class RoutesPage {
       page: () => BreathingScreen(),
       transition: Transition.fadeIn,
     ),
+
     GetPage(
       name: RoutesName.profile,
       page: () => ProfileScreen(),
       transition: Transition.fadeIn,
     ),
 
-
+    GetPage(
+      name: RoutesName.journal,
+      page: () => JournalScreen(),
+      transition: Transition.fadeIn,
+    ),
   ];
 }
