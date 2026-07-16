@@ -36,6 +36,9 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   flutter_tts: ^4.0.2
   speech_to_text: ^7.0.0
+  http:
+  flutter_secure_storage:
+  logger: ^2.7.0
 
   flutter_launcher_icons:
 flutter_icons:

@@ -3,6 +3,7 @@ import 'package:lifenest/app/feature/Onboarding/controller/OnboardingController.
 import 'package:lifenest/app/feature/auth/controller/CurrentMoodController.dart';
 import 'package:lifenest/app/feature/auth/controller/ForgotController.dart';
 import 'package:lifenest/app/feature/auth/controller/LoginPageController.dart';
+import 'package:lifenest/app/feature/auth/controller/authcontroller.dart';
 import 'package:lifenest/app/feature/chatbot/controller/ChatbotController.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
 import 'package:lifenest/app/feature/journal/controller/JournalController.dart';
@@ -14,6 +15,7 @@ class AppBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<LoginPageController>(() => LoginPageController(), fenix: true);
+   // Get.lazyPut<AuthController>(() => AuthController(), fenix: true);
     Get.lazyPut<OnboardingController>(
       () => OnboardingController(),
       fenix: true,

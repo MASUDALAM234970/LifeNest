@@ -4,6 +4,7 @@ import 'package:lifenest/app/constant/AppTextStyle.dart';
 import 'package:lifenest/app/constant/AppTexts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lifenest/app/feature/auth/controller/LoginPageController.dart';
+import 'package:lifenest/app/feature/auth/controller/authcontroller.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
 class Loginpage extends StatelessWidget {
@@ -12,6 +13,7 @@ class Loginpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final LoginPageController controller = Get.put(LoginPageController());
+    // final AuthController controller = Get.put(AuthController());
     return Scaffold(
       extendBodyBehindAppBar: true, // 🔥 important
 
@@ -35,7 +37,7 @@ class Loginpage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Image.asset("assets/image/auth/juno_86.png"),
                 ),
-        
+
                 Text(Apptexts.Welcome_login, style: AppTextStyle.marko40024wel),
                 Text(Apptexts.login_to, style: AppTextStyle.mango50014login),
                 SizedBox(height: 30.h),
@@ -50,25 +52,26 @@ class Loginpage extends StatelessWidget {
                         width: 336.w,
                         height: 50.h,
                         child: TextFormField(
+                          controller: controller.emailController,
                           style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             hintText: Apptexts.enter_email,
                             hintStyle: AppTextStyle.mango40014enter,
-        
+
                             prefixIcon: const Icon(
                               Icons.email_outlined,
                               color: Color(0xff3C83F6),
                             ),
-        
+
                             filled: true,
                             fillColor: const Color(0xFF3A1C71),
-        
+
                             // purple background
                             contentPadding: EdgeInsets.symmetric(
                               vertical: 16.h,
                               horizontal: 16.w,
                             ),
-        
+
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6.r),
                               borderSide: const BorderSide(
@@ -76,7 +79,7 @@ class Loginpage extends StatelessWidget {
                                 width: 1.5,
                               ),
                             ),
-        
+
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6.r),
                               borderSide: const BorderSide(
@@ -84,7 +87,7 @@ class Loginpage extends StatelessWidget {
                                 width: 1.5,
                               ),
                             ),
-        
+
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6.r),
                               borderSide: const BorderSide(
@@ -102,11 +105,14 @@ class Loginpage extends StatelessWidget {
                         width: 336.w,
                         height: 50.h,
                         child: TextFormField(
+                          controller: controller.passwordController,
+                          obscureText: controller.isPasswordHidden.value,
+
                           style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             hintText: Apptexts.enter_password,
                             hintStyle: AppTextStyle.mango40014enter,
-        
+
                             prefixIcon: Padding(
                               padding: const EdgeInsets.all(12),
                               child: Image.asset(
@@ -118,21 +124,21 @@ class Loginpage extends StatelessWidget {
                                 ), // যদি color tint দিতে চাও
                               ),
                             ),
-        
+
                             suffixIcon: const Icon(
                               Icons.visibility_off_outlined,
                               color: Color(0xff3C83F6),
                             ),
-        
+
                             filled: true,
                             fillColor: const Color(0xFF3A1C71),
-        
+
                             // purple background
                             contentPadding: EdgeInsets.symmetric(
                               vertical: 16.h,
                               horizontal: 16.w,
                             ),
-        
+
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6.r),
                               borderSide: const BorderSide(
@@ -140,7 +146,7 @@ class Loginpage extends StatelessWidget {
                                 width: 1.5,
                               ),
                             ),
-        
+
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6.r),
                               borderSide: const BorderSide(
@@ -148,7 +154,7 @@ class Loginpage extends StatelessWidget {
                                 width: 1.5,
                               ),
                             ),
-        
+
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6.r),
                               borderSide: const BorderSide(
@@ -167,7 +173,7 @@ class Loginpage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        
+
                     children: [
                       Text("Remember Me", style: AppTextStyle.mango40012forget),
                       GestureDetector(
@@ -194,9 +200,13 @@ class Loginpage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Get.toNamed(RoutesName.home);
+                      //Get.toNamed(RoutesName.home);
+                      controller.login();
                     },
-                    child: Text("Sign In", style: AppTextStyle.mango50014signIn),
+                    child: Text(
+                      "Sign In",
+                      style: AppTextStyle.mango50014signIn,
+                    ),
                   ),
                 ),
                 SizedBox(height: 38.h),
@@ -207,15 +217,18 @@ class Loginpage extends StatelessWidget {
                       const Expanded(
                         child: Divider(color: Colors.white, thickness: 1),
                       ),
-        
+
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 10.w),
                         child: Text(
                           "OR",
-                          style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.sp,
+                          ),
                         ),
                       ),
-        
+
                       const Expanded(
                         child: Divider(color: Colors.white, thickness: 1),
                       ),
