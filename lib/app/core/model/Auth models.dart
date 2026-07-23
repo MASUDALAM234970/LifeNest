@@ -90,3 +90,4 @@ class ResetPasswordRequest {
     'confirm_password': confirmPassword,
   };
 }
+
