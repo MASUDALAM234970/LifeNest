@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import '../conts/ApiException.dart';
 import '../conts/endpoints.dart';
 
-
 class ApiClient {
   ApiClient._internal();
 
@@ -68,84 +67,75 @@ class ApiClient {
   }
 
   Future<dynamic> get(
-      String endpoint, {
-        bool auth = true,
-        Map<String, String>? headers,
-      }) async {
+    String endpoint, {
+    bool auth = true,
+    Map<String, String>? headers,
+  }) async {
     final response = await _client
         .get(
-      Uri.parse("${Endpoints.baseUrl}$endpoint"),
-      headers: await _buildHeaders(
-        auth: auth,
-        headers: headers,
-      ),
-    )
+          Uri.parse("${Endpoints.baseUrl}$endpoint"),
+          headers: await _buildHeaders(auth: auth, headers: headers),
+        )
         .timeout(const Duration(seconds: 30));
 
     return _handleResponse(response);
   }
 
   Future<dynamic> post(
-      String endpoint, {
-        dynamic body,
-        bool auth = true,
-        Map<String, String>? headers,
-      }) async {
+    String endpoint, {
+    dynamic body,
+    bool auth = true,
+    Map<String, String>? headers,
+  }) async {
     final response = await _client
         .post(
-      Uri.parse("${Endpoints.baseUrl}$endpoint"),
-      headers: await _buildHeaders(
-        auth: auth,
-        headers: headers,
-      ),
-      body: jsonEncode(body),
-    )
+          Uri.parse("${Endpoints.baseUrl}$endpoint"),
+          headers: await _buildHeaders(auth: auth, headers: headers),
+          body: jsonEncode(body),
+        )
         .timeout(const Duration(seconds: 30));
 
     return _handleResponse(response);
   }
 
   Future<dynamic> patch(
-      String endpoint, {
-        dynamic body,
-        bool auth = true,
-        Map<String, String>? headers,
-      }) async {
+    String endpoint, {
+    dynamic body,
+    bool auth = true,
+    Map<String, String>? headers,
+  }) async {
     final response = await _client
         .patch(
-      Uri.parse("${Endpoints.baseUrl}$endpoint"),
-      headers: await _buildHeaders(
-        auth: auth,
-        headers: headers,
-      ),
-      body: jsonEncode(body),
-    )
+          Uri.parse("${Endpoints.baseUrl}$endpoint"),
+          headers: await _buildHeaders(auth: auth, headers: headers),
+          body: jsonEncode(body),
+        )
         .timeout(const Duration(seconds: 30));
 
     return _handleResponse(response);
   }
 
   Future<dynamic> delete(
-      String endpoint, {
-        dynamic body,
-        bool auth = true,
-        Map<String, String>? headers,
-      }) async {
+    String endpoint, {
+    dynamic body,
+    bool auth = true,
+    Map<String, String>? headers,
+  }) async {
     final response = await _client
         .delete(
-      Uri.parse("${Endpoints.baseUrl}$endpoint"),
-      headers: await _buildHeaders(
-        auth: auth,
-        headers: headers,
-      ),
-      body: jsonEncode(body),
-    )
+          Uri.parse("${Endpoints.baseUrl}$endpoint"),
+          headers: await _buildHeaders(auth: auth, headers: headers),
+          body: jsonEncode(body),
+        )
         .timeout(const Duration(seconds: 30));
 
     return _handleResponse(response);
   }
 
   dynamic _handleResponse(http.Response response) {
+    print("Status Code: ${response.statusCode}");
+    print("Response Body: ${response.body}");
+
     final body = response.body.isEmpty ? {} : jsonDecode(response.body);
 
     switch (response.statusCode) {
@@ -154,40 +144,62 @@ class ApiClient {
         return body;
 
       case 400:
-        throw ApiException(
-          message: body["message"] ?? "Bad Request",
-          statusCode: 400,
-        );
-
       case 401:
-        throw ApiException(
-          message: body["message"] ?? "Unauthorized",
-          statusCode: 401,
-        );
-
       case 403:
-        throw ApiException(
-          message: body["message"] ?? "Forbidden",
-          statusCode: 403,
-        );
-
       case 404:
-        throw ApiException(
-          message: body["message"] ?? "Not Found",
-          statusCode: 404,
-        );
-
       case 500:
-        throw ApiException(
-          message: body["message"] ?? "Internal Server Error",
-          statusCode: 500,
-        );
-
       default:
         throw ApiException(
-          message: body["message"] ?? "Something went wrong",
+          message: _extractErrorMessage(body),
           statusCode: response.statusCode,
         );
     }
+  }
+
+  /// Extract error message from API response
+  String _extractErrorMessage(dynamic body) {
+    if (body == null) {
+      return "Something went wrong";
+    }
+
+    if (body is String) {
+      return body;
+    }
+
+    if (body is Map<String, dynamic>) {
+      // ✅ First check validation errors
+      if (body["errors"] != null && body["errors"] is Map<String, dynamic>) {
+        final Map<String, dynamic> errors = body["errors"];
+
+        final List<String> messages = [];
+
+        errors.forEach((key, value) {
+          if (value is List) {
+            messages.addAll(value.map((e) => e.toString()));
+          } else {
+            messages.add(value.toString());
+          }
+        });
+
+        if (messages.isNotEmpty) {
+          return messages.join("\n");
+        }
+      }
+
+      // Then check common message fields
+      if (body["message"] != null) {
+        return body["message"].toString();
+      }
+
+      if (body["detail"] != null) {
+        return body["detail"].toString();
+      }
+
+      if (body["error"] != null) {
+        return body["error"].toString();
+      }
+    }
+
+    return "Something went wrong";
   }
 }

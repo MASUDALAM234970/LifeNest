@@ -4,11 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
+import '../controller/LoginPageController.dart';
+
 class Gender extends StatelessWidget {
   const Gender({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final LoginPageController controller = Get.find<LoginPageController>();
     return Scaffold(
       extendBodyBehindAppBar: true,
 
@@ -33,9 +36,7 @@ class Gender extends StatelessWidget {
                 spacing: 17,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Get.toNamed(RoutesName.country);
-                    },
+
                     child: SizedBox(
                       width: 160.w,
                       height: 185.h,
@@ -71,6 +72,9 @@ class Gender extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(6.r),
                               ),
                               child: GestureDetector(
+                                onTap: () async {
+                                  await controller.updateGender("male");
+                                },
                                 child: Text(
                                   "Male",
                                   style: AppTextStyle.mango700214mf,
@@ -83,9 +87,7 @@ class Gender extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Get.toNamed(RoutesName.country);
-                    },
+
                     child: SizedBox(
                       width: 160.w,
                       height: 185.h,
@@ -120,9 +122,14 @@ class Gender extends StatelessWidget {
                                 color: const Color(0xff3C83F6),
                                 borderRadius: BorderRadius.circular(6.r),
                               ),
-                              child: Text(
-                                "Female",
-                                style: AppTextStyle.mango700214mf,
+                              child: GestureDetector(
+                                onTap: () async {
+                                  await controller.updateGender("female");
+                                },
+                                child: Text(
+                                  "Female",
+                                  style: AppTextStyle.mango700214mf,
+                                ),
                               ),
                             ),
                           ],
