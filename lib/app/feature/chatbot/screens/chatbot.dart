@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lifenest/app/constant/AppTextStyle.dart';
-import '../../home/screens/CustomBottomNavBar.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/constant/AppTextStyle.dart';
 
@@ -17,9 +12,6 @@ class Chatbot extends GetView<ChatbotController> {
 
   @override
   Widget build(BuildContext context) {
-    // GetX auto-injects the controller if it's already put() in a binding.
-    // Falling back to Get.put here keeps this screen drop-in usable even
-    // without a binding set up yet.
     Get.put(ChatbotController(), tag: null);
 
     return Scaffold(
@@ -29,25 +21,21 @@ class Chatbot extends GetView<ChatbotController> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Container(
-        child: SafeArea(
-          child: Obx(
-            () => Column(
-              children: [
-                Expanded(
-                  child: controller.hasMessages
-                      ? _ChatList(controller: controller)
-                      : const _WelcomeState(),
-                ),
-                _ChatInputBar(controller: controller),
-                SizedBox(height: 12.h),
-              ],
-            ),
+      body: SafeArea(
+        child: Obx(
+              () => Column(
+            children: [
+              Expanded(
+                child: controller.hasMessages
+                    ? _ChatList(controller: controller)
+                    : const _WelcomeState(),
+              ),
+              _ChatInputBar(controller: controller),
+              SizedBox(height: 12.h),
+            ],
           ),
         ),
       ),
-
-      /// Bottom Nav (GetX)
       bottomNavigationBar: const CustomBottomNavBar(currentIndex: 2),
     );
   }
@@ -59,26 +47,25 @@ class _WelcomeState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 5, right: 5),
+      padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 143, right: 143),
-            child: Image.asset(
-              "assets/image/auth/juno_86.png",
-              width: 77.5.w,
-              height: 100.h,
-            ),
+          Image.asset(
+            "assets/image/auth/juno_86.png",
+            width: 77.5.w,
+            height: 100.h,
           ),
           SizedBox(height: 20.h),
           Text(
-            "Meet Juno — your private voice journaling\n                           companion.",
+            "Meet Juno — your private voice journaling companion.",
+            textAlign: TextAlign.center,
             style: AppTextStyle.mango80016FAFAFA,
           ),
           SizedBox(height: 8.h),
           Text(
             "Speak your mind. Understand your emotions. Heal with AI.",
+            textAlign: TextAlign.center,
             style: AppTextStyle.mango40012feature,
           ),
         ],
@@ -87,9 +74,6 @@ class _WelcomeState extends StatelessWidget {
   }
 }
 
-/// ---------------------------------------------------------------------
-/// Populated conversation — matches the second screenshot
-/// ---------------------------------------------------------------------
 class _ChatList extends StatelessWidget {
   final ChatbotController controller;
 
@@ -101,7 +85,7 @@ class _ChatList extends StatelessWidget {
       controller: controller.scrollController,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       itemCount:
-          controller.messages.length + (controller.isBotTyping.value ? 1 : 0),
+      controller.messages.length + (controller.isBotTyping.value ? 1 : 0),
       itemBuilder: (context, index) {
         if (index == controller.messages.length) {
           return const _TypingBubble();
@@ -130,8 +114,8 @@ class _ChatBubble extends StatelessWidget {
         color: isUser
             ? Colors.white.withOpacity(0.16)
             : (message.isError
-                  ? Colors.red.withOpacity(0.25)
-                  : Colors.white.withOpacity(0.14)),
+            ? Colors.red.withOpacity(0.25)
+            : Colors.white.withOpacity(0.14)),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(18.r),
           topRight: Radius.circular(18.r),
@@ -150,9 +134,8 @@ class _ChatBubble extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 4.h),
       child: Row(
-        mainAxisAlignment: isUser
-            ? MainAxisAlignment.end
-            : MainAxisAlignment.start,
+        mainAxisAlignment:
+        isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: isUser
             ? [Flexible(child: bubble), SizedBox(width: 8.w), avatar]
@@ -266,17 +249,20 @@ class _UserAvatar extends StatelessWidget {
     return CircleAvatar(
       radius: 16.r,
       backgroundColor: Colors.white24,
-      // TODO: swap for the signed-in user's real profile photo
-      backgroundImage: const AssetImage("assets/image/profile/user_avatar.png"),
-      onBackgroundImageError: (_, __) {},
-      child: Icon(Icons.person, size: 16.sp, color: Colors.white),
+      child: ClipOval(
+        child: Image.asset(
+          "assets/image/profile/user_avatar.png",
+          width: 32.r,
+          height: 32.r,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) =>
+              Icon(Icons.person, size: 16.sp, color: Colors.white),
+        ),
+      ),
     );
   }
 }
 
-/// ---------------------------------------------------------------------
-/// Input bar — shared between both states
-/// ---------------------------------------------------------------------
 class _ChatInputBar extends StatelessWidget {
   final ChatbotController controller;
 
@@ -288,14 +274,14 @@ class _ChatInputBar extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0x992a2d93),
+          color: const Color(0x992a2d93),
           borderRadius: BorderRadius.circular(31.r),
-          border: Border.all(color: Color(0x4d3c83f6)),
+          border: Border.all(color: const Color(0x4d3c83f6)),
         ),
         child: Row(
           children: [
             Obx(
-              () => IconButton(
+                  () => IconButton(
                 onPressed: controller.toggleVoiceInput,
                 icon: Icon(
                   Icons.mic_rounded,
@@ -319,26 +305,26 @@ class _ChatInputBar extends StatelessWidget {
               ),
             ),
             Obx(
-              () => controller.isSending.value
+                  () => controller.isSending.value
                   ? Padding(
-                      padding: EdgeInsets.all(10.r),
-                      child: SizedBox(
-                        width: 18.w,
-                        height: 18.w,
-                        child: const CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.white70,
-                        ),
-                      ),
-                    )
+                padding: EdgeInsets.all(10.r),
+                child: SizedBox(
+                  width: 18.w,
+                  height: 18.w,
+                  child: const CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: Colors.white70,
+                  ),
+                ),
+              )
                   : IconButton(
-                      onPressed: controller.sendMessage,
-                      icon: Icon(
-                        Icons.send_rounded,
-                        color: Colors.white70,
-                        size: 20.sp,
-                      ),
-                    ),
+                onPressed: controller.sendMessage,
+                icon: Icon(
+                  Icons.send_rounded,
+                  color: Colors.white70,
+                  size: 20.sp,
+                ),
+              ),
             ),
           ],
         ),

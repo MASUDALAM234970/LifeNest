@@ -34,4 +34,9 @@ class Endpoints {
 
   // ---------------- Schema ----------------
   static const schema = "/api/schema/";
+             //--------------Chat api views----------------
+
+  static const  chatbot = "/api/chatbot/chat/";
+
+
 }
