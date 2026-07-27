@@ -60,7 +60,7 @@ class LoginPageController extends GetxController {
       );
 
       // Navigate to Home
-      Get.offAllNamed(RoutesName.home);
+      Get.offAllNamed(RoutesName.musiclist);
     } on ApiException catch (e) {
       Get.snackbar("Login Failed", e.message, snackPosition: SnackPosition.TOP);
     } catch (e) {

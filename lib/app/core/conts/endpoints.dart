@@ -5,7 +5,6 @@ class Endpoints {
   //static const baseUrl = "192.168.0.109:8000";
   static const baseUrl = "http://192.168.0.103:8000";
 
-
   // ---------------- Auth ----------------
   static const signup = "/api/users/signup/";
   static const login = "/api/users/login/";
@@ -34,9 +33,12 @@ class Endpoints {
 
   // ---------------- Schema ----------------
   static const schema = "/api/schema/";
-             //--------------Chat api views----------------
 
-  static const  chatbot = "/api/chatbot/chat/";
+  //--------------Chat api views----------------
 
+  static const chatbot = "/api/chatbot/chat/";
 
+  //----------------- music-----------------
+  static const musicList = "/api/music/list/";
+  static const musicById = "/api/music";
 }

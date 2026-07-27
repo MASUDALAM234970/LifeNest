@@ -27,4 +27,8 @@ class RoutesName {
   //Journal Screen
 
   static const String journal = "/journal";
+
+  // ------------------------Music name--------------------------
+  static const String musiclist = "/musiclist";
+  static const String musicplay = "/musicplay";
 }

@@ -16,6 +16,8 @@ import 'package:lifenest/app/feature/home/screens/ProfileScreen.dart';
 import 'package:lifenest/app/feature/home/screens/home.dart';
 import 'package:lifenest/app/feature/mind/screens/BreathingScreen.dart';
 import 'package:lifenest/app/feature/mind/screens/MindTools.dart';
+import 'package:lifenest/app/feature/music/screen/MusicTherapyScreen.dart';
+import 'package:lifenest/app/feature/music/screen/PlayingNowScreen.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
 import '../feature/Onboarding/screen/onboarding_view.dart';
@@ -124,6 +126,17 @@ class RoutesPage {
     GetPage(
       name: RoutesName.journal,
       page: () => JournalScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: RoutesName.musiclist,
+      page: () => MusicTherapyScreen(),
+      transition: Transition.fadeIn,
+    ),
+
+    GetPage(
+      name: RoutesName.musicplay,
+      page: () => PlayingNowScreen(musicId: Get.arguments as int),
       transition: Transition.fadeIn,
     ),
   ];
