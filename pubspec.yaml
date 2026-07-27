@@ -40,6 +40,7 @@ dev_dependencies:
   flutter_secure_storage:
   logger: ^2.7.0
   pinput:
+  audioplayers:
 
   flutter_launcher_icons:
 flutter_icons:
