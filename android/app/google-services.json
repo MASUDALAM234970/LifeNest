@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "724696132773",
+    "project_id": "lifenest-659b2",
+    "storage_bucket": "lifenest-659b2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724696132773:android:2f67d16a16f967cab5714c",
+        "android_client_info": {
+          "package_name": "com.example.lifenest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724696132773-1qda9ditc8ifattnarob9assjgihbvnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8mW6uBJ1kkyztATaE1Ak2g-fnVlcrwRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724696132773-1qda9ditc8ifattnarob9assjgihbvnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
