@@ -41,6 +41,9 @@ dev_dependencies:
   logger: ^2.7.0
   pinput:
   audioplayers:
+  firebase_core:
+  firebase_auth:
+  google_sign_in:
 
   flutter_launcher_icons:
 flutter_icons:

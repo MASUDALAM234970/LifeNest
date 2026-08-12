@@ -5,10 +5,20 @@ import 'package:lifenest/app/routes/routes_name.dart';
 import 'package:lifenest/app/routes/routes_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Firebase before using FirebaseAuth
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   GoogleFonts.config.allowRuntimeFetching = false;
+
   runApp(const MyApp());
 }
 
@@ -25,18 +35,23 @@ class MyApp extends StatelessWidget {
         return Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/image/background/background_image.png'),
+              image: AssetImage(
+                'assets/image/background/background_image.png',
+              ),
               fit: BoxFit.cover,
             ),
           ),
           child: GetMaterialApp(
-            title: "Lifenest",
+            title: 'Lifenest',
             debugShowCheckedModeBanner: false,
+
             initialRoute: RoutesName.login,
             getPages: RoutesPage.pages,
             initialBinding: AppBinding(),
 
-            theme: ThemeData(scaffoldBackgroundColor: Colors.transparent),
+            theme: ThemeData(
+              scaffoldBackgroundColor: Colors.transparent,
+            ),
           ),
         );
       },

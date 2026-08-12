@@ -3,7 +3,8 @@ class Endpoints {
 
   // base url
   //static const baseUrl = "192.168.0.109:8000";
-  static const baseUrl = "http://192.168.0.103:8000";
+  //static const baseUrl = "http://192.168.0.103:8000";
+  static const baseUrl = "https://lifenestbackend-production.up.railway.app";
 
   // ---------------- Auth ----------------
   static const signup = "/api/users/signup/";
@@ -41,4 +42,7 @@ class Endpoints {
   //----------------- music-----------------
   static const musicList = "/api/music/list/";
   static const musicById = "/api/music";
+
+  //google In
+
 }
