@@ -244,7 +244,7 @@ class Loginpage extends StatelessWidget {
                         child: socialButton(
                           text: "Google",
                           iconPath: "assets/image/auth/google.png",
-                          onTap: () {},
+                          onTap:controller.googleLogin
                         ),
                       ),
                       SizedBox(width: 12.w),

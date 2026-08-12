@@ -10,8 +10,13 @@ import '../../../core/conts/ApiException.dart';
 import '../../../core/conts/endpoints.dart';
 import '../../../core/storage/app_storage.dart';
 import '../../../routes/routes_name.dart';
+import 'google_auth_controller.dart';
+
 
 class LoginPageController extends GetxController {
+
+
+  final GoogleAuthController googleAuthController = GoogleAuthController();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final dateOfBirthController = TextEditingController();
@@ -60,13 +65,14 @@ class LoginPageController extends GetxController {
       );
 
       // Navigate to Home
-      Get.offAllNamed(RoutesName.musiclist);
+      Get.offAllNamed(RoutesName.home);
     } on ApiException catch (e) {
       Get.snackbar("Login Failed", e.message, snackPosition: SnackPosition.TOP);
     } catch (e) {
       print("Login Error: $e");
 
-      Get.snackbar("Error", e.toString(), snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar("Error", e.toString(), snackPosition: SnackPosition.TOP);
+      duration: const Duration(seconds: 3);
     }
   }
 
@@ -245,6 +251,60 @@ class LoginPageController extends GetxController {
   void forgot_screen() {
     // Get.toNamed(RoutesName.forgotPassword);
   }
+
+  Future<void> googleLogin() async {
+    try {
+      final String? firebaseToken =
+      await googleAuthController.signInWithGoogle();
+
+      if (firebaseToken == null) {
+        Get.snackbar(
+          'Login Cancelled',
+          'Google login was cancelled.',
+          snackPosition: SnackPosition.BOTTOM,
+        );
+        return;
+      }
+
+      // Django API hit
+      final response = await ApiClient.instance.post(
+        Endpoints.firebaseAuth,
+        body: {
+          'firebase_token': firebaseToken,
+        },
+        auth: false,
+      );
+
+      // JWT save
+      await ApiClient.instance.saveTokens(
+        access: response['data']['tokens']['access'],
+        refresh: response['data']['tokens']['refresh'],
+      );
+
+      // Success Toast
+      Get.snackbar(
+        'Success',
+        'Login successful!',
+        snackPosition: SnackPosition.TOP,
+        duration: const Duration(seconds: 2),
+      );
+
+      // Go to Home
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      Get.offAllNamed(RoutesName.home);
+    } catch (e) {
+      Get.snackbar(
+        'Login Failed',
+        'Something went wrong. Please try again.',
+        snackPosition: SnackPosition.TOP,
+        duration: const Duration(seconds: 3),
+      );
+
+      print('Google Login Failed: $e');
+    }
+  }
+
 
   @override
   void onClose() {
