@@ -41,13 +41,16 @@ class Registerpage extends StatelessWidget {
                       height: 50.h,
                       child: TextFormField(
                         controller: controller.nameController,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                        ),
                         decoration: InputDecoration(
                           hintText: "Enter Full Name",
                           hintStyle: AppTextStyle.mango40014enter,
 
                           prefixIcon: const Icon(
-                            Icons.email_outlined,
+                            Icons.person,
                             color: Color(0xff3C83F6),
                           ),
 
@@ -96,7 +99,12 @@ class Registerpage extends StatelessWidget {
                       height: 50.h,
                       child: TextFormField(
                         controller: controller.emailController,
-                        style: const TextStyle(color: Colors.white),
+                        keyboardType: TextInputType.emailAddress,
+                        maxLines: 1,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                        ),
                         decoration: InputDecoration(
                           hintText: Apptexts.enter_email,
                           hintStyle: AppTextStyle.mango40014enter,
@@ -112,7 +120,7 @@ class Registerpage extends StatelessWidget {
                           // purple background
                           contentPadding: EdgeInsets.symmetric(
                             vertical: 16.h,
-                            horizontal: 16.w,
+                            horizontal: 10.w,
                           ),
 
                           border: OutlineInputBorder(
@@ -151,7 +159,10 @@ class Registerpage extends StatelessWidget {
                       height: 50.h,
                       child: TextFormField(
                         controller: controller.dateOfBirthController,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                        ),
                         decoration: InputDecoration(
                           hintText: "YYYY-MM-DD",
                           hintStyle: AppTextStyle.mango40014enter,
@@ -208,69 +219,81 @@ class Registerpage extends StatelessWidget {
                     //--------------------Date of Birth-------------------
                     Text("Password", style: AppTextStyle.mango40012email),
                     SizedBox(height: 5.h),
-                    SizedBox(
-                      width: 336.w,
-                      height: 50.h,
-                      child: TextFormField(
-                        controller: controller.passwordController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          hintText: Apptexts.enter_password,
-                          hintStyle: AppTextStyle.mango40014enter,
+                    Obx(
+                          () => SizedBox(
+                        width: 336.w,
+                        height: 50.h,
+                        child: TextFormField(
+                          controller: controller.passwordController,
 
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.all(12),
-                            child: Image.asset(
-                              "assets/image/auth/fingureprint.png",
-                              width: 20,
-                              height: 20,
-                              color: Color(
-                                0xff3C83F6,
-                              ), // যদি color tint দিতে চাও
+                          obscureText: controller.isPasswordHidden.value,
+
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                          ),
+
+                          decoration: InputDecoration(
+                            hintText: Apptexts.enter_password,
+                            hintStyle: AppTextStyle.mango40014enter,
+
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(12),
+                              child: Image.asset(
+                                "assets/image/auth/fingureprint.png",
+                                width: 20,
+                                height: 20,
+                                color: const Color(0xff3C83F6),
+                              ),
                             ),
-                          ),
 
-                          suffixIcon: const Icon(
-                            Icons.visibility_off_outlined,
-                            color: Color(0xff3C83F6),
-                          ),
-
-                          filled: true,
-                          fillColor: const Color(0xFF3A1C71),
-
-                          // purple background
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 16.h,
-                            horizontal: 16.w,
-                          ),
-
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6.r),
-                            borderSide: const BorderSide(
-                              color: Color(0xff2A2D93),
-                              width: 1.5,
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                controller.isPasswordHidden.toggle();
+                              },
+                              icon: Icon(
+                                controller.isPasswordHidden.value
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined,
+                                color: const Color(0xff3C83F6),
+                              ),
                             ),
-                          ),
 
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6.r),
-                            borderSide: const BorderSide(
-                              color: Color(0xff2A2D93),
-                              width: 1.5,
+                            filled: true,
+                            fillColor: const Color(0xFF3A1C71),
+
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 16.h,
+                              horizontal: 16.w,
                             ),
-                          ),
 
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6.r),
-                            borderSide: const BorderSide(
-                              color: Color(0xff3C83F6),
-                              width: 2,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                              borderSide: const BorderSide(
+                                color: Color(0xff2A2D93),
+                                width: 1.5,
+                              ),
+                            ),
+
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                              borderSide: const BorderSide(
+                                color: Color(0xff2A2D93),
+                                width: 1.5,
+                              ),
+                            ),
+
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                              borderSide: const BorderSide(
+                                color: Color(0xff3C83F6),
+                                width: 2,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-
                     //--------------------Date of Birth-------------------
                     SizedBox(height: 12.h),
                     Text(
@@ -278,56 +301,81 @@ class Registerpage extends StatelessWidget {
                       style: AppTextStyle.mango40012email,
                     ),
                     SizedBox(height: 5.h),
-                    SizedBox(
-                      width: 336.w,
-                      height: 50.h,
-                      child: TextFormField(
-                        controller: controller.confirmPasswordController,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          hintText: "Confirm Your Password",
-                          hintStyle: AppTextStyle.mango40014enter,
+                    Obx(
+                          () => SizedBox(
+                        width: 336.w,
+                        height: 50.h,
+                        child: TextFormField(
+                          controller: controller.confirmPasswordController,
 
-                          prefixIcon: const Icon(
-                            Icons.email_outlined,
-                            color: Color(0xff3C83F6),
+                          obscureText: controller.isConfirmPasswordHidden.value,
+
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
                           ),
 
-                          filled: true,
-                          fillColor: const Color(0xFF3A1C71),
+                          decoration: InputDecoration(
+                            hintText: "Confirm Your Password",
+                            hintStyle: AppTextStyle.mango40014enter,
 
-                          // purple background
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 16.h,
-                            horizontal: 16.w,
-                          ),
-
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6.r),
-                            borderSide: const BorderSide(
-                              color: Color(0xff2A2D93),
-                              width: 1.5,
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(12),
+                              child: Image.asset(
+                                "assets/image/auth/fingureprint.png",
+                                width: 20,
+                                height: 20,
+                                color: const Color(0xff3C83F6),
+                              ),
                             ),
-                          ),
 
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6.r),
-                            borderSide: const BorderSide(
-                              color: Color(0xff2A2D93),
-                              width: 1.5,
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                controller.isConfirmPasswordHidden.toggle();
+                              },
+                              icon: Icon(
+                                controller.isConfirmPasswordHidden.value
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined,
+                                color: const Color(0xff3C83F6),
+                              ),
                             ),
-                          ),
 
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6.r),
-                            borderSide: const BorderSide(
-                              color: Color(0xff3C83F6),
-                              width: 2,
+                            filled: true,
+                            fillColor: const Color(0xFF3A1C71),
+
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 16.h,
+                              horizontal: 16.w,
+                            ),
+
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                              borderSide: const BorderSide(
+                                color: Color(0xff2A2D93),
+                                width: 1.5,
+                              ),
+                            ),
+
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                              borderSide: const BorderSide(
+                                color: Color(0xff2A2D93),
+                                width: 1.5,
+                              ),
+                            ),
+
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                              borderSide: const BorderSide(
+                                color: Color(0xff3C83F6),
+                                width: 2,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -343,7 +391,10 @@ class Registerpage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6.r),
                     ),
                   ),
-                  onPressed: controller.register,
+                 onPressed: (){
+                    Get.toNamed(RoutesName.otp);
+                 },
+                 // onPressed: controller.register,
                   child: Text("Sign UP", style: AppTextStyle.mango50014signIn),
                 ),
               ),

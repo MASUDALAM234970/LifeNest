@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:lifenest/app/feature/home/screens/Feature.dart';
+import 'package:lifenest/app/feature/home/screens/sos.dart';
 import 'package:lifenest/app/feature/journal/screens/JournalScreen.dart';
 import 'package:lifenest/app/feature/Onboarding/screen/Onboarding_one.dart';
 import 'package:lifenest/app/feature/Onboarding/screen/Onboarding_three.dart';
@@ -15,13 +17,16 @@ import 'package:lifenest/app/feature/chatbot/screens/chatbot.dart';
 import 'package:lifenest/app/feature/home/screens/ProfileScreen.dart';
 import 'package:lifenest/app/feature/home/screens/home.dart';
 import 'package:lifenest/app/feature/mind/screens/BreathingScreen.dart';
+import 'package:lifenest/app/feature/mind/screens/GroundingScree.dart';
 import 'package:lifenest/app/feature/mind/screens/MindTools.dart';
+import 'package:lifenest/app/feature/mind/screens/MirrorTalkScreen.dart';
 import 'package:lifenest/app/feature/music/screen/MusicTherapyScreen.dart';
 import 'package:lifenest/app/feature/music/screen/PlayingNowScreen.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
 import '../feature/Onboarding/screen/onboarding_view.dart';
 import '../feature/auth/screens/currrentMoodPage_four.dart';
+import '../feature/auth/screens/otp_screen.dart';
 
 class RoutesPage {
   static final List<GetPage> pages = [
@@ -112,11 +117,10 @@ class RoutesPage {
     ),
 
     GetPage(
-      name: RoutesName.Breathing,
-      page: () => BreathingScreen(),
+      name: RoutesName.mirrortalk,
+      page: () => MirrorTalkScreen(),
       transition: Transition.fadeIn,
     ),
-
     GetPage(
       name: RoutesName.profile,
       page: () => ProfileScreen(),
@@ -129,7 +133,7 @@ class RoutesPage {
       transition: Transition.fadeIn,
     ),
     GetPage(
-      name: RoutesName.musiclist,
+      name: RoutesName.musictherapy,
       page: () => MusicTherapyScreen(),
       transition: Transition.fadeIn,
     ),
@@ -137,6 +141,21 @@ class RoutesPage {
     GetPage(
       name: RoutesName.musicplay,
       page: () => PlayingNowScreen(musicId: Get.arguments as int),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: RoutesName.featur,
+      page: () => Feature(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: RoutesName.sos,
+      page: () => Sos(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: RoutesName.otp,
+      page: () => OtpScreen(),
       transition: Transition.fadeIn,
     ),
   ];

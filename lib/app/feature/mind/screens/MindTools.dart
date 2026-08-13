@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../../routes/routes_name.dart';
 import '../../home/screens/helper.dart';
 import 'BreathingScreen.dart';
+
 class Mindtools extends GetView<Homecontroller> {
   const Mindtools({super.key});
 
@@ -32,33 +33,36 @@ class Mindtools extends GetView<Homecontroller> {
             FeatureCard(
               image: "assets/image/mindtools/mind_1.png",
               title: "Breathing Timer",
-              subtitle:
-                  "Sync your breath with a calming \nanimation.",
-            //  onTap: () => Get.toNamed(RoutesName.Breathing),
-              onTap: () => Get.to(() => const BreathingScreen()),
+              subtitle: "Sync your breath with a calming \nanimation.",
+              onTap: () {
+                Get.to(() => const BreathingScreen());
+              },
             ),
 
             FeatureCard(
               image: "assets/image/mindtools/mind_2.png",
               title: "5-4-3-2-1 Grounding",
-              subtitle:
-              "Sync your breath with a calming \nanimation.",
-              onTap: () => Get.to(() => GroundingScreen()),
+              subtitle: "Sync your breath with a calming \nanimation.",
+              onTap: () {
+                Get.to(() => const GroundingScreen());
+              },
             ),
 
             FeatureCard(
               image: "assets/image/mindtools/mind_3.png",
               title: "Mirror Talk",
-              subtitle:
-                  "Practice self-compassion with a guided\nscript.",
-              onTap: () => Get.to(() => const MirrorTalkScreen()),
+              subtitle: "Practice self-compassion with a guided\nscript.",
+              onTap: () {
+                Get.toNamed(RoutesName.mirrortalk);
+              },
             ),
             FeatureCard(
               image: "assets/image/mindtools/mind_4.png",
               title: "Music Therapy",
-              subtitle:
-                  "Practice self-compassion with a guided\nscript.",
-              onTap: () => Get.to(() => const Mindtools()),
+              subtitle: "Practice self-compassion with a guided\nscript.",
+              onTap: () {
+                Get.toNamed(RoutesName.musictherapy);
+              },
             ),
           ],
         ),

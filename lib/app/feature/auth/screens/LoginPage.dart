@@ -15,7 +15,7 @@ class Loginpage extends StatelessWidget {
     final LoginPageController controller = Get.put(LoginPageController());
     // final AuthController controller = Get.put(AuthController());
     return Scaffold(
-      extendBodyBehindAppBar: true, // 🔥 important
+      extendBodyBehindAppBar: true, //
 
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -104,66 +104,73 @@ class Loginpage extends StatelessWidget {
                       SizedBox(
                         width: 336.w,
                         height: 50.h,
-                        child: TextFormField(
-                          controller: controller.passwordController,
-                          obscureText: controller.isPasswordHidden.value,
+                          child: Obx(
+                                () => TextFormField(
+                              controller: controller.passwordController,
+                              obscureText: controller.isPasswordHidden.value,
 
-                          style: const TextStyle(color: Colors.white),
-                          decoration: InputDecoration(
-                            hintText: Apptexts.enter_password,
-                            hintStyle: AppTextStyle.mango40014enter,
+                              style: const TextStyle(color: Colors.white),
 
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: Image.asset(
-                                "assets/image/auth/fingureprint.png",
-                                width: 20,
-                                height: 20,
-                                color: Color(
-                                  0xff3C83F6,
-                                ), // যদি color tint দিতে চাও
+                              decoration: InputDecoration(
+                                hintText: Apptexts.enter_password,
+                                hintStyle: AppTextStyle.mango40014enter,
+
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.all(12),
+                                  child: Image.asset(
+                                    "assets/image/auth/fingureprint.png",
+                                    width: 20,
+                                    height: 20,
+                                    color: const Color(0xff3C83F6),
+                                  ),
+                                ),
+
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    controller.isPasswordHidden.toggle();
+                                  },
+                                  icon: Icon(
+                                    controller.isPasswordHidden.value
+                                        ? Icons.visibility_off_outlined
+                                        : Icons.visibility_outlined,
+                                    color: const Color(0xff3C83F6),
+                                  ),
+                                ),
+
+                                filled: true,
+                                fillColor: const Color(0xFF3A1C71),
+
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: 16.h,
+                                  horizontal: 16.w,
+                                ),
+
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6.r),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff2A2D93),
+                                    width: 1.5,
+                                  ),
+                                ),
+
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6.r),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff2A2D93),
+                                    width: 1.5,
+                                  ),
+                                ),
+
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6.r),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff3C83F6),
+                                    width: 2,
+                                  ),
+                                ),
                               ),
                             ),
-
-                            suffixIcon: const Icon(
-                              Icons.visibility_off_outlined,
-                              color: Color(0xff3C83F6),
-                            ),
-
-                            filled: true,
-                            fillColor: const Color(0xFF3A1C71),
-
-                            // purple background
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: 16.h,
-                              horizontal: 16.w,
-                            ),
-
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(6.r),
-                              borderSide: const BorderSide(
-                                color: Color(0xff2A2D93),
-                                width: 1.5,
-                              ),
-                            ),
-
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(6.r),
-                              borderSide: const BorderSide(
-                                color: Color(0xff2A2D93),
-                                width: 1.5,
-                              ),
-                            ),
-
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(6.r),
-                              borderSide: const BorderSide(
-                                color: Color(0xff3C83F6),
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                        ),
+                          )
                       ),
                     ],
                   ),
@@ -200,8 +207,8 @@ class Loginpage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      //Get.toNamed(RoutesName.home);
-                      controller.login();
+                      Get.toNamed(RoutesName.home);
+                    //  controller.login();
                     },
                     child: Text(
                       "Sign In",

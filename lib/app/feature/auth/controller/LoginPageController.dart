@@ -12,10 +12,7 @@ import '../../../core/storage/app_storage.dart';
 import '../../../routes/routes_name.dart';
 import 'google_auth_controller.dart';
 
-
 class LoginPageController extends GetxController {
-
-
   final GoogleAuthController googleAuthController = GoogleAuthController();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -25,6 +22,7 @@ class LoginPageController extends GetxController {
 
   final RxBool isLoading = false.obs;
   final RxBool isPasswordHidden = true.obs;
+  final RxBool isConfirmPasswordHidden = true.obs;
 
   /// Show / Hide Password
   void togglePassword() {
@@ -72,7 +70,8 @@ class LoginPageController extends GetxController {
       print("Login Error: $e");
 
       Get.snackbar("Error", e.toString(), snackPosition: SnackPosition.TOP);
-      duration: const Duration(seconds: 3);
+      duration:
+      const Duration(seconds: 3);
     }
   }
 
@@ -90,6 +89,7 @@ class LoginPageController extends GetxController {
 
     if (dateOfBirthController.text.trim().isEmpty) {
       Get.snackbar("Error", "Please enter your date of birth");
+      Duration(seconds: 2);
       return;
     }
 
@@ -100,7 +100,14 @@ class LoginPageController extends GetxController {
     final match = regex.firstMatch(dob);
 
     if (match == null) {
-      Get.snackbar("Error", "Date must be yyyy-MM-dd");
+      Get.snackbar(
+        "Error",
+        "Date Must be YYYY-MM-DD",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+
+      Duration(seconds: 3);
       return;
     }
 
@@ -109,24 +116,48 @@ class LoginPageController extends GetxController {
     final day = int.parse(match.group(3)!);
 
     if (month < 1 || month > 12) {
-      Get.snackbar("Error", "Month must be between 1 and 12");
+      Get.snackbar(
+        "Error",
+        "Month must be between 1 and 12",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      Duration(seconds: 3);
       return;
     }
 
     final lastDay = DateTime(year, month + 1, 0).day;
 
     if (day < 1 || day > lastDay) {
-      Get.snackbar("Error", "Invalid day for the selected month");
+      Get.snackbar(
+        "Error",
+        "Invalid day for the selected month",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      Duration(seconds: 3);
       return;
     }
 
     if (confirmPasswordController.text.isEmpty) {
-      Get.snackbar("Error", "Please confirm your password");
+      Get.snackbar(
+        "Error",
+        "Please confirm your password",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      Duration(seconds: 3);
       return;
     }
 
     if (passwordController.text != confirmPasswordController.text) {
-      Get.snackbar("Error", "Passwords do not match");
+      Get.snackbar(
+        "Error",
+        "Passwords do not match",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      Duration(seconds: 3);
       return;
     }
 
@@ -254,8 +285,8 @@ class LoginPageController extends GetxController {
 
   Future<void> googleLogin() async {
     try {
-      final String? firebaseToken =
-      await googleAuthController.signInWithGoogle();
+      final String? firebaseToken = await googleAuthController
+          .signInWithGoogle();
 
       if (firebaseToken == null) {
         Get.snackbar(
@@ -269,9 +300,7 @@ class LoginPageController extends GetxController {
       // Django API hit
       final response = await ApiClient.instance.post(
         Endpoints.firebaseAuth,
-        body: {
-          'firebase_token': firebaseToken,
-        },
+        body: {'firebase_token': firebaseToken},
         auth: false,
       );
 
@@ -304,7 +333,6 @@ class LoginPageController extends GetxController {
       print('Google Login Failed: $e');
     }
   }
-
 
   @override
   void onClose() {

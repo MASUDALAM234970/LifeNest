@@ -36,7 +36,6 @@ class Gender extends StatelessWidget {
                 spacing: 17,
                 children: [
                   GestureDetector(
-
                     child: SizedBox(
                       width: 160.w,
                       height: 185.h,
@@ -73,7 +72,9 @@ class Gender extends StatelessWidget {
                               ),
                               child: GestureDetector(
                                 onTap: () async {
-                                  await controller.updateGender("male");
+                                  Get.toNamed(RoutesName.country);
+
+                                  //await controller.updateGender("male");
                                 },
                                 child: Text(
                                   "Male",
@@ -87,7 +88,6 @@ class Gender extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-
                     child: SizedBox(
                       width: 160.w,
                       height: 185.h,

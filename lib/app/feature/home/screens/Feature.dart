@@ -2,13 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
-import 'package:lifenest/app/routes/routes_page.dart';
-
-
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../../constant/AppTextStyle.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../mind/screens/MindTools.dart';
 import 'helper.dart';
 
 class Feature extends GetView<Homecontroller> {
@@ -38,7 +33,13 @@ class Feature extends GetView<Homecontroller> {
               title: "Journal",
               subtitle:
                   "Record your thoughts, get AI-powered\ninsights, and chat with your coach.",
-              onTap: () => Get.to(() => const Mindtools()),
+              onTap: () {
+                Fluttertoast.showToast(
+                  msg: "This feature is coming soon",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                );
+              },
             ),
 
             FeatureCard(
@@ -46,9 +47,13 @@ class Feature extends GetView<Homecontroller> {
               title: "Spiritual",
               subtitle:
                   "Track your spiritual and wellness goals.\nYou're crushing it!",
-              onTap: () => Get.to(() =>  Mindtools()),
-
-
+              onTap: () {
+                Fluttertoast.showToast(
+                  msg: "This feature is coming soon",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.TOP,
+                );
+              },
             ),
 
             FeatureCard(
@@ -56,14 +61,18 @@ class Feature extends GetView<Homecontroller> {
               title: "SOS",
               subtitle:
                   "Find crisis resources and immediate help.\nIt’s okay to ask.",
-              onTap: () => Get.to(() => const Mindtools()),
+              onTap: () {
+                Get.toNamed(RoutesName.sos);
+              },
             ),
             FeatureCard(
               image: "assets/image/feature/feature_04.png",
               title: "Ai Coach",
               subtitle:
                   "Record your thoughts, get AI-powered\ninsights, and chat with your coach.",
-              onTap: () => Get.to(() => const Mindtools()),
+              onTap: () {
+                Get.toNamed(RoutesName.chatbot);
+              },
             ),
 
             FeatureCard(
@@ -78,7 +87,13 @@ class Feature extends GetView<Homecontroller> {
               image: "assets/image/feature/feature_06.png",
               title: "Reminder",
               subtitle: "Receive a notification for your daily\ncheck-in.",
-              onTap: () => Get.to(() => const Mindtools()),
+              onTap: () {
+                Fluttertoast.showToast(
+                  msg: "This feature is coming soon",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                );
+              },
             ),
           ],
         ),
