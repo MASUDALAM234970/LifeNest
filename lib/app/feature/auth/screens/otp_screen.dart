@@ -5,6 +5,7 @@ import 'package:pinput/pinput.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../constant/AppTextStyle.dart';
+import '../../../routes/routes_name.dart';
 
 class OtpScreen extends StatelessWidget {
   OtpScreen({super.key});
@@ -116,8 +117,8 @@ class OtpScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    //Get.toNamed(RoutesName.home);
-                    controller.sendOtp(email);
+                    Get.toNamed(RoutesName.gender);
+                   // controller.sendOtp(email);
                   },
                   child: Text("Resend OTP", style: AppTextStyle.mango50014signIn),
                 ),

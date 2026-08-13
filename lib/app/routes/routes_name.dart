@@ -19,16 +19,26 @@ class RoutesName {
   static const String home = '/home';
   static const String chatbot = '/chatbot';
   static const String profile = '/profile';
+  static const String featur = "/feature";
+  static const String sos = "/sos";
 
   //mindTools
   static const String mindtools = "/mindtools";
-  static const String Breathing = "/Breathing ";
+
+  // static const String Breathing = "/Breathing ";
+  //static const String grounding = "/grounding ";
+  static const String mirrortalk = "/mirrortalk";
 
   //Journal Screen
 
   static const String journal = "/journal";
 
   // ------------------------Music name--------------------------
-  static const String musiclist = "/musiclist";
+  static const String musictherapy = "/musictherapy";
+
+  //static const String musiclist = "/musiclist";
   static const String musicplay = "/musicplay";
+
+  // Auth
+  static const String otp = "/opt";
 }

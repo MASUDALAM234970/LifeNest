@@ -73,12 +73,17 @@ class Home extends GetView<Homecontroller> {
                     ),
                     SizedBox(width: 10.w),
                     Expanded(
-                      child: Text(
-                        "How are you feeling today?",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(RoutesName.featur);
+                        },
+                        child: Text(
+                          "How are you feeling today?",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),
@@ -92,12 +97,17 @@ class Home extends GetView<Homecontroller> {
 
               SizedBox(height: 30.h),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Quick Access", style: AppTextStyle.mango70014aui),
-                  Text("View all", style: AppTextStyle.mango40012views),
-                ],
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(RoutesName.mindtools);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Quick Access", style: AppTextStyle.mango70014aui),
+                    Text("View all", style: AppTextStyle.mango40012views),
+                  ],
+                ),
               ),
 
               SizedBox(height: 20.h),
@@ -109,7 +119,7 @@ class Home extends GetView<Homecontroller> {
                       padding: const EdgeInsets.only(left: 8.0),
                       child: GestureDetector(
                         onTap: () {
-                          Get.to(() => Feature());
+                          //      Get.to(() => Feature());
                         },
                         child: Image.asset("assets/image/home/journal.png"),
                       ),
@@ -134,7 +144,7 @@ class Home extends GetView<Homecontroller> {
                       padding: const EdgeInsets.only(left: 8.0),
                       child: GestureDetector(
                         onTap: () {
-                          Get.to(() => Sos());
+                          Get.toNamed(RoutesName.sos);
                         },
                         child: Image.asset("assets/image/home/sos.png"),
                       ),
@@ -144,7 +154,12 @@ class Home extends GetView<Homecontroller> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(right: 10),
-                      child: Image.asset("assets/image/home/ai_coach.png"),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(RoutesName.chatbot);
+                        },
+                        child: Image.asset("assets/image/home/ai_coach.png"),
+                      ),
                     ),
                   ),
                 ],
@@ -159,15 +174,7 @@ class Home extends GetView<Homecontroller> {
       ),
 
       /// ✅ Bottom Nav (GetX)
-
-       bottomNavigationBar: const CustomBottomNavBar(
-           currentIndex: 0,
-         ),
-
+      bottomNavigationBar: const CustomBottomNavBar(currentIndex: 0),
     );
   }
-
-
-
-
 }
