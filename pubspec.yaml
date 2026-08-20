@@ -46,6 +46,7 @@ dev_dependencies:
   google_sign_in:
   fluttertoast: ^8.2.12
   animated_text_effects: ^0.0.7
+  scribble:
 
   flutter_launcher_icons:
 flutter_icons:
