@@ -183,4 +183,22 @@ class AppTextStyle {
     fontWeight: FontWeight.w800,
     color: const Color(0xffFAFAFA),
   );
+
+  static TextStyle get mango80017FAFAFA => GoogleFonts.manrope(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w800,
+    color: const Color(0xffFAFAFA),
+  );
+
+  static TextStyle get mango70017FAFAFA => GoogleFonts.manrope(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w800,
+    color: const Color(0xffFAFAFA),
+  );
+
+  static TextStyle get mango50010FAFAFA => GoogleFonts.manrope(
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w500,
+    color: const Color(0xffFAFAFA),
+  );
 }

@@ -3,14 +3,13 @@ import 'package:lifenest/app/feature/Onboarding/controller/OnboardingController.
 import 'package:lifenest/app/feature/auth/controller/CurrentMoodController.dart';
 import 'package:lifenest/app/feature/auth/controller/ForgotController.dart';
 import 'package:lifenest/app/feature/auth/controller/LoginPageController.dart';
-import 'package:lifenest/app/feature/auth/controller/authcontroller.dart';
 import 'package:lifenest/app/feature/chatbot/controller/ChatbotController.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
 import 'package:lifenest/app/feature/journal/controller/JournalController.dart';
 import 'package:lifenest/app/feature/mind/controller/MindController.dart';
 import 'package:lifenest/app/feature/music/controller/MusicListController.dart';
 import 'package:lifenest/app/feature/music/controller/PlayingNowController.dart';
-
+import 'package:lifenest/app/feature/profile/controller/ProfileController.dart';
 import '../../feature/auth/controller/SelectCountryController.dart';
 
 class AppBinding extends Bindings {
@@ -33,6 +32,7 @@ class AppBinding extends Bindings {
     );
 
     Get.lazyPut<Homecontroller>(() => Homecontroller(), fenix: true);
+    Get.lazyPut<ProfileController>(() => ProfileController(), fenix: true);
 
     Get.lazyPut<MindController>(() => MindController(), fenix: true);
     Get.lazyPut<JournalController>(() => JournalController(), fenix: true);
