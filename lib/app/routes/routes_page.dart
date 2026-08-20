@@ -14,10 +14,7 @@ import 'package:lifenest/app/feature/auth/screens/LoginPage.dart';
 import 'package:lifenest/app/feature/auth/screens/RegisterPage.dart';
 import 'package:lifenest/app/feature/auth/screens/gender.dart';
 import 'package:lifenest/app/feature/chatbot/screens/chatbot.dart';
-import 'package:lifenest/app/feature/home/screens/ProfileScreen.dart';
 import 'package:lifenest/app/feature/home/screens/home.dart';
-import 'package:lifenest/app/feature/mind/screens/BreathingScreen.dart';
-import 'package:lifenest/app/feature/mind/screens/GroundingScree.dart';
 import 'package:lifenest/app/feature/mind/screens/MindTools.dart';
 import 'package:lifenest/app/feature/mind/screens/MirrorTalkScreen.dart';
 import 'package:lifenest/app/feature/music/screen/MusicTherapyScreen.dart';
@@ -27,6 +24,7 @@ import 'package:lifenest/app/routes/routes_name.dart';
 import '../feature/Onboarding/screen/onboarding_view.dart';
 import '../feature/auth/screens/currrentMoodPage_four.dart';
 import '../feature/auth/screens/otp_screen.dart';
+import '../feature/profile/screens/ProfileScreen.dart';
 
 class RoutesPage {
   static final List<GetPage> pages = [
