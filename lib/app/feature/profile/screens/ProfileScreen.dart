@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
-import 'CustomBottomNavBar.dart';
+import '../../home/screens/CustomBottomNavBar.dart';
+
 
 class ProfileScreen extends GetView<Homecontroller> {
   final String name;
