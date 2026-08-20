@@ -4,7 +4,7 @@ import 'package:lifenest/app/constant/AppTextStyle.dart';
 import 'package:lifenest/app/constant/AppTexts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lifenest/app/feature/auth/controller/LoginPageController.dart';
-import 'package:lifenest/app/feature/auth/controller/authcontroller.dart';
+
 import 'package:lifenest/app/routes/routes_name.dart';
 
 class Loginpage extends StatelessWidget {
