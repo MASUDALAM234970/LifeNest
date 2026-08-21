@@ -17,6 +17,7 @@ import 'package:lifenest/app/feature/chatbot/screens/chatbot.dart';
 import 'package:lifenest/app/feature/home/screens/home.dart';
 import 'package:lifenest/app/feature/mind/screens/MindTools.dart';
 import 'package:lifenest/app/feature/mind/screens/MirrorTalkScreen.dart';
+import 'package:lifenest/app/feature/mind/screens/finished.dart';
 import 'package:lifenest/app/feature/music/screen/MusicTherapyScreen.dart';
 import 'package:lifenest/app/feature/music/screen/PlayingNowScreen.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
@@ -135,7 +136,11 @@ class RoutesPage {
       page: () => MusicTherapyScreen(),
       transition: Transition.fadeIn,
     ),
-
+    GetPage(
+      name: RoutesName.finish,
+      page: () => Finished(),
+      transition: Transition.fadeIn,
+    ),
     GetPage(
       name: RoutesName.musicplay,
       page: () => PlayingNowScreen(musicId: Get.arguments as int),

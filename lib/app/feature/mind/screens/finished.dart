@@ -13,24 +13,14 @@ class Finished extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: IconButton(
-            onPressed: () => Get.back(),
-            icon: Image.asset("assets/image/arrow/arrow.png"),
-          ),
-        ),
+        automaticallyImplyLeading: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("5-4-3-2-1 Grounding", style: AppTextStyle.mango70016sos),
+        title: Text(
+          "5-4-3-2-1 Grounding",
+          style: AppTextStyle.mango70016sos,
+        ),
         centerTitle: true,
-        // centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Image.asset("assets/image/arrow/arrow.png"),
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.only(right: 20, left: 20),
@@ -39,8 +29,8 @@ class Finished extends StatelessWidget {
             SizedBox(height: 140),
 
             SizedBox(
-              width: 335,
-              height: 349,
+              width: 325,
+              height: 339,
               child: Container(
                 decoration: BoxDecoration(
                   color: Color(0xff2A2D93),

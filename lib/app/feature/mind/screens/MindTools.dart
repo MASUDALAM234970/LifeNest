@@ -16,7 +16,7 @@ class Mindtools extends GetView<Homecontroller> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Get.back(),
+          onPressed: () => Get.offAllNamed(RoutesName.home),
           icon: Image.asset("assets/image/arrow/arrow.png"),
         ),
 

@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lifenest/app/feature/mind/screens/finished.dart';
 
 import '../../../constant/AppTextStyle.dart';
+import '../../../routes/routes_name.dart';
 import 'helpers.dart';
-import 'package:get/get.dart';
 
 class GroundingScreen extends StatefulWidget {
   const GroundingScreen({super.key});
@@ -17,44 +20,93 @@ class _GroundingScreenState extends State<GroundingScreen> {
 
   int currentPage = 0;
 
-  final List<Widget> pages = const [Page1(), Page2(), Page3(), Page4()];
+  Timer? _timer;
+  int remainingSeconds = 30;
+  bool canNext = false;
+
+  final List<Widget> pages = const [
+    Page1(),
+    Page2(),
+    Page3(),
+    Page4(),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Screen open হলেই timer start
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+
+    remainingSeconds = 30;
+    canNext = false;
+
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+          (timer) {
+        if (!mounted) {
+          timer.cancel();
+          return;
+        }
+
+        if (remainingSeconds > 0) {
+          setState(() {
+            remainingSeconds--;
+          });
+        }
+
+        if (remainingSeconds == 0) {
+          timer.cancel();
+
+          setState(() {
+            canNext = true;
+          });
+        }
+      },
+    );
+  }
 
   void nextPage() {
+    if (!canNext) return;
+
     if (currentPage < pages.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-    } else {
-      // Last page
-       Get.to(()=>Finished());
 
+      _startTimer();
+    } else {
+      _timer?.cancel();
+
+      Get.offAllNamed(RoutesName.finish);
     }
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: IconButton(
-            onPressed: () => Get.back(),
-            icon: Image.asset("assets/image/arrow/arrow.png"),
-          ),
-        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("5-4-3-2-1 Grounding", style: AppTextStyle.mango70016sos),
+        title: Text(
+          "5-4-3-2-1 Grounding",
+          style: AppTextStyle.mango70016sos,
+        ),
         centerTitle: true,
-        // centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Image.asset("assets/image/arrow/cross.png"),
-          ),
-        ],
       ),
+
       body: SafeArea(
         child: Column(
           children: [
@@ -72,21 +124,28 @@ class _GroundingScreenState extends State<GroundingScreen> {
             ),
 
             SizedBox(
-              width: 336,
-              height: 44,
+              width: 300,
+              height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff3C83F6),
-                  foregroundColor: Color(0xffFAFAFA),
+                  backgroundColor: const Color(0xff3C83F6),
+                  disabledBackgroundColor: const Color(0xffc53636),
+                  foregroundColor: const Color(0xffFAFAFA),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6),
                   ),
                 ),
-                onPressed: nextPage,
-                child: Text("Next", style: AppTextStyle.mango50014signIn),
+
+                onPressed: canNext ? nextPage : null,
+
+                child: Text(
+                  canNext ? "Next" : "$remainingSeconds",
+                  style: AppTextStyle.mango50014signIn,
+                ),
               ),
             ),
-            SizedBox(height: 40),
+
+            const SizedBox(height: 40),
           ],
         ),
       ),
