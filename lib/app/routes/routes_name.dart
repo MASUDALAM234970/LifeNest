@@ -26,7 +26,7 @@ class RoutesName {
   static const String mindtools = "/mindtools";
 
   // static const String Breathing = "/Breathing ";
-  //static const String grounding = "/grounding ";
+  static const String finish = "/finish";
   static const String mirrortalk = "/mirrortalk";
 
   //Journal Screen
