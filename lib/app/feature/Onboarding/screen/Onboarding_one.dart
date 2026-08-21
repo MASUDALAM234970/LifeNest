@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:lifenest/app/constant/AppTextStyle.dart';
+import 'package:lifenest/app/constant/app_text_style.dart';
 import 'package:lifenest/app/feature/Onboarding/controller/OnboardingController.dart';
-import 'package:lifenest/app/routes/routes_name.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 class OnboardingOne extends StatelessWidget {
   const OnboardingOne({super.key});
 
@@ -19,8 +16,7 @@ class OnboardingOne extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        // centerTitle: true,
-        // title: const Text("Home", style: TextStyle(color: Colors.white)),
+
       ),
       body: Padding(
         padding: EdgeInsets.only(

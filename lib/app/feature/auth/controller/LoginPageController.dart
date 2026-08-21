@@ -1,17 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/feature/auth/screens/otp_screen.dart';
-
 import '../../../core/model/Auth models.dart';
 import '../../../core/networks/api_client.dart';
-import '../../../core/conts/ApiException.dart';
+import '../../../core/conts/apiexception.dart';
 import '../../../core/conts/endpoints.dart';
-import '../../../core/storage/app_storage.dart';
 import '../../../routes/routes_name.dart';
 import 'google_auth_controller.dart';
-
 class LoginPageController extends GetxController {
   final GoogleAuthController googleAuthController = GoogleAuthController();
   final nameController = TextEditingController();
@@ -70,7 +65,7 @@ class LoginPageController extends GetxController {
       print("Login Error: $e");
 
       Get.snackbar("Error", e.toString(), snackPosition: SnackPosition.TOP);
-      duration:
+
       const Duration(seconds: 3);
     }
   }
@@ -223,7 +218,7 @@ class LoginPageController extends GetxController {
         snackPosition: SnackPosition.TOP,
       );
 
-      Get.offAllNamed(RoutesName.login);
+      Get.offAllNamed(RoutesName.gender);
     } on ApiException catch (e) {
       Get.snackbar(
         "Verification Failed",

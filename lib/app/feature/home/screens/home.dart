@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lifenest/app/constant/AppTextStyle.dart';
+import 'package:lifenest/app/constant/app_text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:lifenest/app/feature/home/screens/Feature.dart';
-
-import 'package:lifenest/app/feature/home/screens/sos.dart';
-
-import '../../../constant/AppTextStyle.dart';
 import '../../../routes/routes_name.dart';
 import '../controller/HomeController.dart';
 import 'CustomBottomNavBar.dart';
-
 class Home extends GetView<Homecontroller> {
   Home({super.key});
 
@@ -44,7 +38,7 @@ class Home extends GetView<Homecontroller> {
               SizedBox(height: 30.h),
               Text(
                 "Fuel your day with powerful thoughts",
-                style: AppTextStyle.mango40016_selection,
+                style: AppTextStyle.mango40016selection,
               ),
               SizedBox(height: 30.h),
 

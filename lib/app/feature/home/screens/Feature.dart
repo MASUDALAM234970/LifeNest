@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import 'helper.dart';
 
 class Feature extends GetView<Homecontroller> {

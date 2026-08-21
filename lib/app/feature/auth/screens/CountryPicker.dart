@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import '../../../constant/comon/button.dart';
 import '../controller/SelectCountryController.dart';
 

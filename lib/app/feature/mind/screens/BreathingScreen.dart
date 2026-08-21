@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:lifenest/app/constant/AppTextStyle.dart';
+import 'package:lifenest/app/constant/app_text_style.dart';
 
 /// Full-screen "Breathing" exercise UI — same as the reference design:
 /// pink→purple gradient background, back button, animated pulsing

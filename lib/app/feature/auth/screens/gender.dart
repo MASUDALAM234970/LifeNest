@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifenest/app/constant/AppTextStyle.dart';
+import 'package:lifenest/app/constant/app_text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
@@ -72,9 +72,9 @@ class Gender extends StatelessWidget {
                               ),
                               child: GestureDetector(
                                 onTap: () async {
-                                  Get.toNamed(RoutesName.country);
+                                 // Get.toNamed(RoutesName.country);
 
-                                  //await controller.updateGender("male");
+                                  await controller.updateGender("male");
                                 },
                                 child: Text(
                                   "Male",

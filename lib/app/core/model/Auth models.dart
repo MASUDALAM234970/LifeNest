@@ -1,5 +1,3 @@
-// Models matching the real backend (lib/core/endpoints.dart)
-
 class TokenModel {
   final String access;
   final String refresh;

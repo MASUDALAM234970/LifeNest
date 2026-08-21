@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lifenest/app/feature/auth/controller/CurrentMoodController.dart';
-
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import '../../../constant/comon/button.dart';
 import '../../../routes/routes_name.dart';
-
-
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
-import '../../../constant/AppTextStyle.dart';
-import '../../../constant/comon/button.dart';
-import '../../../routes/routes_name.dart';
-
 class CurrrentmoodpageFour extends StatefulWidget {
   const CurrrentmoodpageFour({super.key});
 
@@ -125,7 +113,7 @@ class _CurrrentmoodpageFourState extends State<CurrrentmoodpageFour> {
                   SizedBox(height: 20.h),
                   Text(
                     'Choose preferred time',
-                    style: AppTextStyle.mango40016_selection,
+                    style: AppTextStyle.mango40016selection,
                     textAlign: TextAlign.center,
                   ),
 

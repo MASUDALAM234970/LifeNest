@@ -3,7 +3,7 @@ import 'package:lifenest/app/constant/comon/button.dart';
 import 'package:lifenest/app/feature/auth/controller/CurrentMoodController.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -84,7 +84,7 @@ class Currentmoodpage0ne extends GetView<CurrentMoodController> {
                           const SizedBox(height: 20),
                           Text(
                             'Select emotions and thoughts that best describe your current state',
-                            style: AppTextStyle.mango40016_selection,
+                            style: AppTextStyle.mango40016selection,
                             textAlign: TextAlign.center,
                           ),
                         ],

@@ -3,7 +3,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:speech_to_text/speech_recognition_result.dart';
 
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 
 
 class MirrorTalkScreen extends StatefulWidget {

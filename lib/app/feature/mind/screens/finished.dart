@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifenest/app/feature/mind/screens/GroundingScree.dart';
 
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import 'package:get/get.dart';
 
 import 'MindTools.dart';

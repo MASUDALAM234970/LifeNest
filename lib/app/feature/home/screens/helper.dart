@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 
 class FeatureCard extends StatelessWidget {
   final String image;

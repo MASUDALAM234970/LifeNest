@@ -16,20 +16,11 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-    #statement
-  get:
-
-  google_fonts:
   flutter_screenutil:
-
+  google_fonts:
+  get:
   flutter_typeahead:
-
-  # School logo upload এর জন্য
+# School logo upload এর জন্য
   image_picker:
   easy_stepper: ^1.0.1
   country_picker_pro: ^0.0.5
@@ -47,6 +38,14 @@ dev_dependencies:
   fluttertoast: ^8.2.12
   animated_text_effects: ^0.0.7
   scribble:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+    #statement
+
+
 
   flutter_launcher_icons:
 flutter_icons:

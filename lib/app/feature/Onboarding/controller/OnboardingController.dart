@@ -7,10 +7,6 @@ class OnboardingController extends GetxController {
     Get.offAllNamed(RoutesName.login);
   }
 
-  // void continue_one() {
-  //   Get.toNamed(RoutesName.onboarding_one);
-  // }
-
   void continue_two() {
     Get.toNamed(RoutesName.onboarding_two);
   }

@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:lifenest/app/feature/Onboarding/controller/OnboardingController.dart';
 import 'package:lifenest/app/feature/auth/controller/CurrentMoodController.dart';
 import 'package:lifenest/app/feature/auth/controller/ForgotController.dart';
@@ -11,7 +10,7 @@ import 'package:lifenest/app/feature/music/controller/MusicListController.dart';
 import 'package:lifenest/app/feature/music/controller/PlayingNowController.dart';
 import 'package:lifenest/app/feature/profile/controller/ProfileController.dart';
 import '../../feature/auth/controller/SelectCountryController.dart';
-
+import 'package:get/get.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
