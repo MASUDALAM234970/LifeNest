@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../constant/AppTextStyle.dart';
-import '../../../constant/AppTexts.dart';
+import '../../../constant/app_text_style.dart';
+import '../../../constant/app_texts.dart';
 import '../../../routes/routes_name.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -38,7 +38,7 @@ class ForgotPassword extends StatelessWidget {
               SizedBox(height: 5.h),
 
               Text(
-                Apptexts.Request_password,
+                Apptexts.requestpassword,
                 style: AppTextStyle.marko40024wel,
               ),
 
@@ -67,7 +67,7 @@ class ForgotPassword extends StatelessWidget {
                     child: TextFormField(
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        hintText: Apptexts.enter_email,
+                        hintText: Apptexts.enteremail,
                         hintStyle: AppTextStyle.mango40014enter,
                         prefixIcon: const Icon(
                           Icons.email_outlined,
@@ -116,7 +116,7 @@ class ForgotPassword extends StatelessWidget {
                   ),
                   onPressed: () {},
                   child: Text(
-                    Apptexts.send_Reset,
+                    Apptexts.sendReset,
                     style: AppTextStyle.mango50014signIn,
                   ),
                 ),
@@ -128,7 +128,7 @@ class ForgotPassword extends StatelessWidget {
                 onTap: () => Get.offAllNamed(RoutesName.login),
                 child: RichText(
                   text: TextSpan(
-                    text: Apptexts.remember_yours,
+                    text: Apptexts.rememberyours,
                     style: AppTextStyle.mango50012dont,
                     children: [
                       TextSpan(

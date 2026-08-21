@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:animated_text_effects/animated_text_effects.dart';
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import '../../home/screens/CustomBottomNavBar.dart';
 
 class ProfileScreen extends StatelessWidget {

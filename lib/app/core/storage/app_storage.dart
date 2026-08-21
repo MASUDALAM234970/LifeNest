@@ -1,12 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:lifenest/app/core/networks/api_client.dart';
-
 import '../conts/endpoints.dart';
-
-
 
 class ApiService {
   static const _storage = FlutterSecureStorage();
@@ -46,9 +41,7 @@ class ApiService {
 
   /// Common Headers
   Future<Map<String, String>> _headers({bool auth = true}) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/json',
-    };
+    final headers = <String, String>{'Content-Type': 'application/json'};
 
     if (auth) {
       final token = await accessToken;
@@ -68,21 +61,14 @@ class ApiService {
 
     final response = await http.post(
       Uri.parse(Endpoints.tokenRefresh),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({
-        'refresh': refresh,
-      }),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'refresh': refresh}),
     );
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
 
-      await _storage.write(
-        key: _accessKey,
-        value: data['access'],
-      );
+      await _storage.write(key: _accessKey, value: data['access']);
 
       return true;
     }
@@ -92,16 +78,10 @@ class ApiService {
 
   /// GET
   Future<http.Response> get(String url) async {
-    var response = await http.get(
-      Uri.parse(url),
-      headers: await _headers(),
-    );
+    var response = await http.get(Uri.parse(url), headers: await _headers());
 
     if (response.statusCode == 401 && await _tryRefresh()) {
-      response = await http.get(
-        Uri.parse(url),
-        headers: await _headers(),
-      );
+      response = await http.get(Uri.parse(url), headers: await _headers());
     }
 
     return response;
@@ -109,19 +89,17 @@ class ApiService {
 
   /// POST
   Future<http.Response> post(
-      String url,
-      Map<String, dynamic> body, {
-        bool auth = true,
-      }) async {
+    String url,
+    Map<String, dynamic> body, {
+    bool auth = true,
+  }) async {
     var response = await http.post(
       Uri.parse(url),
       headers: await _headers(auth: auth),
       body: jsonEncode(body),
     );
 
-    if (auth &&
-        response.statusCode == 401 &&
-        await _tryRefresh()) {
+    if (auth && response.statusCode == 401 && await _tryRefresh()) {
       response = await http.post(
         Uri.parse(url),
         headers: await _headers(),
@@ -133,10 +111,7 @@ class ApiService {
   }
 
   /// PATCH
-  Future<http.Response> patch(
-      String url,
-      Map<String, dynamic> body,
-      ) async {
+  Future<http.Response> patch(String url, Map<String, dynamic> body) async {
     var response = await http.patch(
       Uri.parse(url),
       headers: await _headers(),

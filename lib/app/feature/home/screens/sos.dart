@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import 'helper.dart';
 import 'package:get/get.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Sos extends StatelessWidget {
   const Sos({super.key});
@@ -63,7 +61,6 @@ class Sos extends StatelessWidget {
                   const SizedBox(height: 28),
                   Image.asset("assets/image/sos/sos_botton_2.png"),
                   const SizedBox(height: 30),
-
                 ],
               ),
             ],

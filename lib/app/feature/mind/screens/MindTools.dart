@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lifenest/app/feature/home/controller/HomeController.dart';
 import 'package:lifenest/app/feature/mind/screens/GroundingScree.dart';
-import 'package:lifenest/app/feature/mind/screens/MirrorTalkScreen.dart';
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import 'package:get/get.dart';
 import '../../../routes/routes_name.dart';
 import '../../home/screens/helper.dart';
 import 'BreathingScreen.dart';
-
 class Mindtools extends GetView<Homecontroller> {
   const Mindtools({super.key});
 

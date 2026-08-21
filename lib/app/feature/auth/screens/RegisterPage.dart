@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lifenest/app/feature/auth/controller/LoginPageController.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
-import '../../../constant/AppTextStyle.dart';
-import '../../../constant/AppTexts.dart';
+import '../../../constant/app_text_style.dart';
+import '../../../constant/app_texts.dart';
 
 class Registerpage extends StatelessWidget {
   const Registerpage({super.key});
@@ -25,8 +25,8 @@ class Registerpage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Text(Apptexts.Create_an, style: AppTextStyle.marko40024wel),
-              Text(Apptexts.please_sign, style: AppTextStyle.mango50014login),
+              Text(Apptexts.createan, style: AppTextStyle.marko40024wel),
+              Text(Apptexts.pleasesign, style: AppTextStyle.mango50014login),
               SizedBox(height: 5.h),
               Padding(
                 padding: const EdgeInsets.only(left: 19, right: 19),
@@ -106,7 +106,7 @@ class Registerpage extends StatelessWidget {
                           fontSize: 13,
                         ),
                         decoration: InputDecoration(
-                          hintText: Apptexts.enter_email,
+                          hintText: Apptexts.enteremail,
                           hintStyle: AppTextStyle.mango40014enter,
 
                           prefixIcon: const Icon(
@@ -234,7 +234,7 @@ class Registerpage extends StatelessWidget {
                           ),
 
                           decoration: InputDecoration(
-                            hintText: Apptexts.enter_password,
+                            hintText: Apptexts.enterpassword,
                             hintStyle: AppTextStyle.mango40014enter,
 
                             prefixIcon: Padding(
@@ -391,10 +391,10 @@ class Registerpage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(6.r),
                     ),
                   ),
-                 onPressed: (){
-                    Get.toNamed(RoutesName.otp);
-                 },
-                 // onPressed: controller.register,
+                  // onPressed: (){
+                  //    Get.toNamed(RoutesName.otp);
+                  // },
+                  onPressed: controller.register,
                   child: Text("Sign UP", style: AppTextStyle.mango50014signIn),
                 ),
               ),

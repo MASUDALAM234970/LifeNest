@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifenest/app/constant/AppTextStyle.dart';
-import 'package:lifenest/app/constant/AppTexts.dart';
+import 'package:lifenest/app/constant/app_text_style.dart';
+import 'package:lifenest/app/constant/app_texts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lifenest/app/feature/auth/controller/LoginPageController.dart';
 
@@ -38,8 +38,8 @@ class Loginpage extends StatelessWidget {
                   child: Image.asset("assets/image/auth/juno_86.png"),
                 ),
 
-                Text(Apptexts.Welcome_login, style: AppTextStyle.marko40024wel),
-                Text(Apptexts.login_to, style: AppTextStyle.mango50014login),
+                Text(Apptexts.welcomelogin, style: AppTextStyle.marko40024wel),
+                Text(Apptexts.loginto, style: AppTextStyle.mango50014login),
                 SizedBox(height: 30.h),
                 Padding(
                   padding: const EdgeInsets.only(left: 19, right: 19),
@@ -55,7 +55,7 @@ class Loginpage extends StatelessWidget {
                           controller: controller.emailController,
                           style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            hintText: Apptexts.enter_email,
+                            hintText: Apptexts.enteremail,
                             hintStyle: AppTextStyle.mango40014enter,
 
                             prefixIcon: const Icon(
@@ -112,7 +112,7 @@ class Loginpage extends StatelessWidget {
                               style: const TextStyle(color: Colors.white),
 
                               decoration: InputDecoration(
-                                hintText: Apptexts.enter_password,
+                                hintText: Apptexts.enterpassword,
                                 hintStyle: AppTextStyle.mango40014enter,
 
                                 prefixIcon: Padding(
@@ -207,8 +207,8 @@ class Loginpage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Get.toNamed(RoutesName.home);
-                    //  controller.login();
+                     // Get.toNamed(RoutesName.home);
+                     controller.login();
                     },
                     child: Text(
                       "Sign In",

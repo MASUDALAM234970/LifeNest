@@ -106,7 +106,7 @@ class AppTextStyle {
     color: const Color(0xffFAFAFA),
   );
 
-  static TextStyle get mango40016_selection => GoogleFonts.manrope(
+  static TextStyle get mango40016selection => GoogleFonts.manrope(
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
     color: const Color(0x99fafafa),

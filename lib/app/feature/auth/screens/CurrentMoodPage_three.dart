@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:lifenest/app/feature/auth/controller/CurrentMoodController.dart';
 import 'package:lifenest/app/routes/routes_name.dart';
 
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 import '../../../constant/comon/button.dart';
 
 class CurrentmoodpageThree extends GetView<CurrentMoodController> {
@@ -84,7 +84,7 @@ class CurrentmoodpageThree extends GetView<CurrentMoodController> {
                           const SizedBox(height: 20),
                           Text(
                             'Select sleep hours.',
-                            style: AppTextStyle.mango40016_selection,
+                            style: AppTextStyle.mango40016selection,
                             textAlign: TextAlign.center,
                           ),
                         ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constant/AppTextStyle.dart';
+import '../../../constant/app_text_style.dart';
 
 class Page1 extends StatelessWidget {
   const Page1({super.key});

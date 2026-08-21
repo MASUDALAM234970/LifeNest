@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:lifenest/app/constant/AppTextStyle.dart';
+import 'package:lifenest/app/constant/app_text_style.dart';
 
 import '../../home/screens/CustomBottomNavBar.dart';
 import '../controller/ChatbotController.dart';
