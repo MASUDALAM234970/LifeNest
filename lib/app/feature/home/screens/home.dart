@@ -3,6 +3,7 @@ import 'package:lifenest/app/constant/app_text_style.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../routes/routes_name.dart';
+import '../../profile/controller/ProfileController.dart';
 import '../controller/HomeController.dart';
 import 'CustomBottomNavBar.dart';
 class Home extends GetView<Homecontroller> {
@@ -10,22 +11,69 @@ class Home extends GetView<Homecontroller> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ProfileController>();
     return Scaffold(
       appBar: AppBar(
-        leading: Image.asset("assets/image/home/profile.png"),
+        leading: Obx(() {
+          final imageUrl =
+              controller.userProfile.value?.profilePictureUrl ?? "";
+
+          if (imageUrl.isEmpty) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipOval(
+                child: Image.asset(
+                  "assets/image/home/profile.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          }
+
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipOval(
+              child: Image.network(
+                imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    "assets/image/home/profile.png",
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+            ),
+          );
+        }),
+
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Good morning", style: AppTextStyle.mango60026home),
-            Text("Sohan!", style: AppTextStyle.mango60016name),
-          ],
-        ),
+
+        title: Obx(() {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Good morning",
+                style: AppTextStyle.mango60026home,
+              ),
+              Text(
+                "${controller.userProfile.value?.name ?? "Loading..."}!",
+                style: AppTextStyle.mango60016name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          );
+        }),
+
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15.0),
-            child: Image.asset("assets/image/home/notification.png"),
+            child: Image.asset(
+              "assets/image/home/notification.png",
+            ),
           ),
         ],
       ),

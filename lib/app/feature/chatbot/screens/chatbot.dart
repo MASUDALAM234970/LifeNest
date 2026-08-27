@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:lifenest/app/constant/app_text_style.dart';
 
 import '../../home/screens/CustomBottomNavBar.dart';
+import '../../profile/controller/ProfileController.dart';
 import '../controller/ChatbotController.dart';
 import '../models/ChatMessageModel.dart';
 
@@ -14,6 +15,7 @@ class Chatbot extends GetView<ChatbotController> {
   Widget build(BuildContext context) {
     Get.put(ChatbotController(), tag: null);
 
+
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
@@ -23,7 +25,7 @@ class Chatbot extends GetView<ChatbotController> {
       ),
       body: SafeArea(
         child: Obx(
-              () => Column(
+          () => Column(
             children: [
               Expanded(
                 child: controller.hasMessages
@@ -46,6 +48,7 @@ class _WelcomeState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Column(
@@ -85,7 +88,7 @@ class _ChatList extends StatelessWidget {
       controller: controller.scrollController,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       itemCount:
-      controller.messages.length + (controller.isBotTyping.value ? 1 : 0),
+          controller.messages.length + (controller.isBotTyping.value ? 1 : 0),
       itemBuilder: (context, index) {
         if (index == controller.messages.length) {
           return const _TypingBubble();
@@ -114,8 +117,8 @@ class _ChatBubble extends StatelessWidget {
         color: isUser
             ? Colors.white.withOpacity(0.16)
             : (message.isError
-            ? Colors.red.withOpacity(0.25)
-            : Colors.white.withOpacity(0.14)),
+                  ? Colors.red.withOpacity(0.25)
+                  : Colors.white.withOpacity(0.14)),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(18.r),
           topRight: Radius.circular(18.r),
@@ -134,8 +137,9 @@ class _ChatBubble extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(bottom: 4.h),
       child: Row(
-        mainAxisAlignment:
-        isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: isUser
+            ? MainAxisAlignment.end
+            : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: isUser
             ? [Flexible(child: bubble), SizedBox(width: 8.w), avatar]
@@ -236,7 +240,7 @@ class _BotAvatar extends StatelessWidget {
     return CircleAvatar(
       radius: 16.r,
       backgroundColor: const Color(0xFF2DD4C8),
-      child: Icon(Icons.smart_toy_rounded, size: 16.sp, color: Colors.white),
+      child: Icon(Icons.smart_toy_sharp, size: 16.sp, color: Colors.white),
     );
   }
 }
@@ -246,20 +250,38 @@ class _UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 16.r,
-      backgroundColor: Colors.white24,
-      child: ClipOval(
-        child: Image.asset(
-          "assets/image/profile/user_avatar.png",
-          width: 32.r,
-          height: 32.r,
-          fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) =>
-              Icon(Icons.person, size: 16.sp, color: Colors.white),
+    final controller = Get.find<ProfileController>();
+    return Obx(() {
+      final imageUrl = controller.userProfile.value?.profilePictureUrl ?? "";
+
+      return CircleAvatar(
+        radius: 16.r,
+        backgroundColor: Colors.white24,
+        child: ClipOval(
+          child: imageUrl.isNotEmpty
+              ? Image.network(
+                  imageUrl,
+                  width: 32.r,
+                  height: 32.r,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, __, ___) {
+                    return Image.asset(
+                      "assets/image/profile/user_avatar.png",
+                      width: 32.r,
+                      height: 32.r,
+                      fit: BoxFit.cover,
+                    );
+                  },
+                )
+              : Image.asset(
+                  "assets/image/profile/user_avatar.png",
+                  width: 32.r,
+                  height: 32.r,
+                  fit: BoxFit.cover,
+                ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 
@@ -281,7 +303,7 @@ class _ChatInputBar extends StatelessWidget {
         child: Row(
           children: [
             Obx(
-                  () => IconButton(
+              () => IconButton(
                 onPressed: controller.toggleVoiceInput,
                 icon: Icon(
                   Icons.mic_rounded,
@@ -305,26 +327,26 @@ class _ChatInputBar extends StatelessWidget {
               ),
             ),
             Obx(
-                  () => controller.isSending.value
+              () => controller.isSending.value
                   ? Padding(
-                padding: EdgeInsets.all(10.r),
-                child: SizedBox(
-                  width: 18.w,
-                  height: 18.w,
-                  child: const CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: Colors.white70,
-                  ),
-                ),
-              )
+                      padding: EdgeInsets.all(10.r),
+                      child: SizedBox(
+                        width: 18.w,
+                        height: 18.w,
+                        child: const CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    )
                   : IconButton(
-                onPressed: controller.sendMessage,
-                icon: Icon(
-                  Icons.send_rounded,
-                  color: Colors.white70,
-                  size: 20.sp,
-                ),
-              ),
+                      onPressed: controller.sendMessage,
+                      icon: Icon(
+                        Icons.send_rounded,
+                        color: Colors.white70,
+                        size: 20.sp,
+                      ),
+                    ),
             ),
           ],
         ),

@@ -3,12 +3,15 @@ import 'package:get/get.dart';
 import 'package:animated_text_effects/animated_text_effects.dart';
 import '../../../constant/app_text_style.dart';
 import '../../home/screens/CustomBottomNavBar.dart';
+import '../controller/ProfileController.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ProfileController>();
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -38,19 +41,47 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      Image.asset(
-                        "assets/image/home/profile.png",
-                        width: 70,
-                        height: 70,
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        "      MD MASUD ALAM ",
-                        style: AppTextStyle.mango50012dont,
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10,top: 15),
+                    child: Column(
+
+                      children: [
+                        controller
+                                    .userProfile
+                                    .value
+                                    ?.profilePictureUrl
+                                    .isNotEmpty ==
+                                true
+                            ? ClipOval(
+
+                                child: Image.network(
+                                  controller.userProfile.value!.profilePictureUrl,
+                                  width: 70,
+                                  height: 70,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Image.asset(
+                                      "assets/image/home/profile.png",
+                                      width: 80,
+                                      height: 80,
+                                    );
+                                  },
+                                ),
+                              )
+                            : Image.asset(
+                                "assets/image/home/profile.png",
+                                width: 70,
+                                height: 70,
+                              ),
+                        const SizedBox(height: 8),
+                        Text(
+                          controller.   userProfile.   value?.  name ?? "Loading...",
+                          style: AppTextStyle.mango50012dont,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
 
                   TextButton(
@@ -102,7 +133,7 @@ class ProfileScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Text(
-                      "Alisa234970@gmail.com",
+                      controller.userProfile.value?.email ?? "Loading...",
                       style: AppTextStyle.mango50010FAFAFA,
                     ),
                   ),
@@ -123,7 +154,7 @@ class ProfileScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Text(
-                      "Date_of_birth : 2000-05-15",
+                      "Date_of_birth : ${controller.userProfile.value?.dateOfBirth ?? "Loading..."}",
                       style: AppTextStyle.mango50010FAFAFA,
                     ),
                   ),
@@ -145,14 +176,14 @@ class ProfileScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Text(
-                      " Age : 25",
+                      "Age : ${controller.userProfile.value?.age ?? 0}",
                       style: AppTextStyle.mango50010FAFAFA,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Text(
-                      " Gender : Male",
+                      "Gender : ${controller.userProfile.value?.gender ?? "Not provided"}",
                       style: AppTextStyle.mango50010FAFAFA,
                     ),
                   ),
@@ -173,7 +204,7 @@ class ProfileScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Text(
-                      "Last_login : 2026-08-20",
+                      "${controller.userProfile.value?.lastLogin ?? "Loading..."}",
                       style: AppTextStyle.mango50010FAFAFA,
                     ),
                   ),
@@ -198,11 +229,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      const Icon(
-                        Icons.lock,
-                        color: Colors.white,
-                        size: 20,
-                      ),
+                      const Icon(Icons.lock, color: Colors.white, size: 20),
 
                       const SizedBox(width: 12),
 
@@ -217,16 +244,13 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
 
-                      const Icon(
-                        Icons.chevron_right,
-                        color: Colors.white70,
-                      ),
+                      const Icon(Icons.chevron_right, color: Colors.white70),
                     ],
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 10),
             Container(
               width: 335,
               height: 50,
@@ -236,7 +260,9 @@ class ProfileScreen extends StatelessWidget {
               ),
               child: InkWell(
                 borderRadius: BorderRadius.circular(10),
-                onTap: () {},
+                onTap: () {
+                  controller.logout();
+                },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -263,10 +289,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
 
-                      const Icon(
-                        Icons.chevron_right,
-                        color: Colors.white70,
-                      ),
+                      const Icon(Icons.chevron_right, color: Colors.white70),
                     ],
                   ),
                 ),

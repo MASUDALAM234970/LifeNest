@@ -6,6 +6,7 @@ class UserProfile {
   final String? occupation;
   final int age;
   final String profilePictureUrl;
+  final String lastLogin;
 
   const UserProfile({
     required this.name,
@@ -15,10 +16,14 @@ class UserProfile {
     this.occupation,
     required this.age,
     required this.profilePictureUrl,
+    required this.lastLogin,
   });
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
-    const String baseUrl = "https://yourdomain.com"; // <-- change this
+    const String baseUrl =
+        "https://lifenestbackend-production.up.railway.app";
+
+    final profilePicture = json['profile_picture'];
 
     return UserProfile(
       name: json['name'] ?? '',
@@ -27,9 +32,13 @@ class UserProfile {
       gender: json['gender'],
       occupation: json['occupation'],
       age: json['age'] ?? 0,
-      profilePictureUrl: json['profile_picture'] != null
-          ? '$baseUrl${json['profile_picture']}'
+
+      profilePictureUrl: profilePicture != null &&
+          profilePicture.toString().isNotEmpty
+          ? '$baseUrl$profilePicture'
           : '',
+
+      lastLogin: json['last_login'] ?? '',
     );
   }
 }
