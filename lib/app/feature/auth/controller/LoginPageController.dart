@@ -7,6 +7,7 @@ import '../../../core/conts/apiexception.dart';
 import '../../../core/conts/endpoints.dart';
 import '../../../routes/routes_name.dart';
 import 'google_auth_controller.dart';
+
 class LoginPageController extends GetxController {
   final GoogleAuthController googleAuthController = GoogleAuthController();
   final nameController = TextEditingController();
@@ -183,8 +184,13 @@ class LoginPageController extends GetxController {
         snackPosition: SnackPosition.TOP,
       );
 
-      Get.to(() => OtpScreen(), arguments: emailController.text.trim());
-
+      Get.to(
+        () => OtpScreen(),
+        arguments: {
+          "email": emailController.text.trim(),
+          "password": passwordController.text,
+        },
+      );
       // Go to Login Screen
       // Get.offAllNamed(RoutesName.login);
     } on ApiException catch (e) {
@@ -200,11 +206,85 @@ class LoginPageController extends GetxController {
     }
   }
 
-  // otp sender
-
-  Future<void> verifyOtp({required String email, required String otp}) async {
+  // Auto
+  Future<void> autoLogin() async {
     try {
-      final request = VerifyOtpRequest(email: email, otp: otp);
+      final request = UserLoginRequest(
+        email: emailController.text.trim(),
+        password: passwordController.text,
+      );
+
+      print("Auto Login Request: ${request.toJson()}");
+
+      final response = await ApiClient.instance.post(
+        Endpoints.login,
+        auth: false,
+        body: request.toJson(),
+      );
+
+      print("Auto Login Response: $response");
+
+      await ApiClient.instance.saveTokens(
+        access: response["data"]["tokens"]["access"],
+        refresh: response["data"]["tokens"]["refresh"],
+      );
+
+      print("Auto Login Successful");
+
+      Get.offAllNamed(RoutesName.gender);
+
+    } on ApiException catch (e) {
+      print("Auto Login Failed: ${e.message}");
+
+      Get.snackbar(
+        "Login Failed",
+        e.message,
+        snackPosition: SnackPosition.TOP,
+      );
+    }
+  }
+
+  // otp login
+  // Future<void> verifyOtp({required String email, required String otp}) async {
+  //   try {
+  //     final request = VerifyOtpRequest(email: email, otp: otp);
+  //
+  //     final response = await ApiClient.instance.post(
+  //       Endpoints.verifyOtp,
+  //       auth: false,
+  //       body: request.toJson(),
+  //     );
+  //
+  //     Get.snackbar(
+  //       "Success",
+  //       response["message"] ?? "Account Verified",
+  //       snackPosition: SnackPosition.TOP,
+  //     );
+  //     // 🔥 OTP verified → Auto Login
+  //     await autoLogin();
+  //
+  //     Get.offAllNamed(RoutesName.gender);
+  //   } on ApiException catch (e) {
+  //     Get.snackbar(
+  //       "Verification Failed",
+  //       e.message,
+  //       snackPosition: SnackPosition.BOTTOM,
+  //     );
+  //   }
+  // }
+
+  // send opt
+
+
+  Future<void> verifyOtp({
+    required String email,
+    required String otp,
+  }) async {
+    try {
+      final request = VerifyOtpRequest(
+        email: email,
+        otp: otp,
+      );
 
       final response = await ApiClient.instance.post(
         Endpoints.verifyOtp,
@@ -218,7 +298,9 @@ class LoginPageController extends GetxController {
         snackPosition: SnackPosition.TOP,
       );
 
-      Get.offAllNamed(RoutesName.gender);
+      // OTP verified
+      await autoLogin();
+
     } on ApiException catch (e) {
       Get.snackbar(
         "Verification Failed",
@@ -228,7 +310,6 @@ class LoginPageController extends GetxController {
     }
   }
 
-  // send opt
 
   Future<void> sendOtp(String email) async {
     try {

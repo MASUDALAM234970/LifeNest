@@ -14,8 +14,13 @@ class OtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String email = Get.arguments ?? "";
+    final args = Get.arguments as Map<String, dynamic>;
+
+    final String email = args["email"] ?? "";
+    final String password = args["password"] ?? "";
     final LoginPageController controller = Get.find<LoginPageController>();
+    controller.emailController.text = email;
+    controller.passwordController.text = password;
 
     final defaultPinTheme = PinTheme(
       width: 55,
@@ -92,6 +97,7 @@ class OtpScreen extends StatelessWidget {
                     await controller.verifyOtp(
                       email: email,
                       otp: otpController.text.trim(),
+
                     );
                   },
                   child: Text(

@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             title: 'Lifenest',
             debugShowCheckedModeBanner: false,
 
-            initialRoute: RoutesName.login,
+            initialRoute: RoutesName.register,
             getPages: RoutesPage.pages,
             initialBinding: AppBinding(),
 
