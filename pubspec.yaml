@@ -21,7 +21,7 @@ dependencies:
   get:
   flutter_typeahead:
 # School logo upload এর জন্য
-  image_picker:
+  image_picker: ^1.2.3
   easy_stepper: ^1.0.1
   country_picker_pro: ^0.0.5
   flutter_lints: ^6.0.0
