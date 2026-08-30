@@ -50,8 +50,8 @@ class Page2 extends StatelessWidget {
       children: [
         SizedBox(height: 140),
         SizedBox(
-          width: 325,
-          height: 339,
+          width: 315,
+          height: 319,
           child: Container(
             decoration: BoxDecoration(
               color: Color(0xff2A2D93),
@@ -89,8 +89,8 @@ class Page3 extends StatelessWidget {
       children: [
         SizedBox(height: 140),
         SizedBox(
-          width: 325,
-          height: 339,
+          width: 315,
+          height: 319,
           child: Container(
             decoration: BoxDecoration(
               color: Color(0xff2A2D93),
@@ -128,8 +128,8 @@ class Page4 extends StatelessWidget {
       children: [
         SizedBox(height: 140),
         SizedBox(
-          width: 325,
-          height: 339,
+          width: 315,
+          height: 319,
           child: Container(
             decoration: BoxDecoration(
               color: Color(0xff2A2D93),
