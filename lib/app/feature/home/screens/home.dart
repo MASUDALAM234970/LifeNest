@@ -6,6 +6,7 @@ import '../../../routes/routes_name.dart';
 import '../../profile/controller/ProfileController.dart';
 import '../controller/HomeController.dart';
 import 'CustomBottomNavBar.dart';
+
 class Home extends GetView<Homecontroller> {
   Home({super.key});
 
@@ -54,10 +55,7 @@ class Home extends GetView<Homecontroller> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Good morning",
-                style: AppTextStyle.mango60026home,
-              ),
+              Text("Good morning", style: AppTextStyle.mango60026home),
               Text(
                 "${controller.userProfile.value?.name ?? "Loading..."}!",
                 style: AppTextStyle.mango60016name,
@@ -71,9 +69,7 @@ class Home extends GetView<Homecontroller> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15.0),
-            child: Image.asset(
-              "assets/image/home/notification.png",
-            ),
+            child: Image.asset("assets/image/home/notification.png"),
           ),
         ],
       ),
@@ -161,17 +157,29 @@ class Home extends GetView<Homecontroller> {
                       padding: const EdgeInsets.only(left: 8.0),
                       child: GestureDetector(
                         onTap: () {
-                          //      Get.to(() => Feature());
+                          Get.toNamed(RoutesName.journal);
                         },
                         child: Image.asset("assets/image/home/journal.png"),
                       ),
                     ),
                   ),
                   SizedBox(width: 15.w),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: Image.asset("assets/image/home/spiritual.png"),
+                  GestureDetector(
+                    onTap: () {
+                      Get.snackbar(
+                        "",
+                        "This feature will be available soon!",
+                        snackPosition: SnackPosition.TOP,
+                        backgroundColor: Colors.black,
+                        colorText: Colors.white,
+                        duration: const Duration(seconds: 2),
+                      );
+                    },
+                    child: Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Image.asset("assets/image/home/spiritual.png"),
+                      ),
                     ),
                   ),
                 ],

@@ -98,6 +98,70 @@ class ApiClient {
     return _handleResponse(response);
   }
 
+  Future<dynamic> put(
+    String endpoint, {
+    dynamic body,
+    bool auth = true,
+    Map<String, String>? headers,
+  }) async {
+    final response = await _client
+        .put(
+          Uri.parse("${Endpoints.baseUrl}$endpoint"),
+          headers: await _buildHeaders(auth: auth, headers: headers),
+          body: jsonEncode(body),
+        )
+        .timeout(const Duration(seconds: 30));
+
+    return _handleResponse(response);
+  }
+
+  Future<dynamic> putMultipart(
+    String endpoint, {
+    required Map<String, String> fields,
+    String? filePath,
+    String fileField = "profile_picture",
+    bool auth = true,
+  }) async {
+    try {
+      final request = http.MultipartRequest(
+        "PUT",
+        Uri.parse("${Endpoints.baseUrl}$endpoint"),
+      );
+
+      // Headers
+      request.headers["Accept"] = "application/json";
+
+      if (auth) {
+        final token = await accessToken;
+
+        if (token != null && token.isNotEmpty) {
+          request.headers["Authorization"] = "Bearer $token";
+        }
+      }
+
+      // Text fields
+      request.fields.addAll(fields);
+
+      // Image
+      if (filePath != null && filePath.isNotEmpty) {
+        request.files.add(
+          await http.MultipartFile.fromPath(fileField, filePath),
+        );
+      }
+
+      final streamedResponse = await request.send().timeout(
+        const Duration(seconds: 30),
+      );
+
+      final response = await http.Response.fromStream(streamedResponse);
+
+      return _handleResponse(response);
+    } catch (e) {
+      print("Multipart PUT Error: $e");
+      rethrow;
+    }
+  }
+
   Future<dynamic> patch(
     String endpoint, {
     dynamic body,

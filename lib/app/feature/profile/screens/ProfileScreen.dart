@@ -4,6 +4,7 @@ import 'package:animated_text_effects/animated_text_effects.dart';
 import '../../../constant/app_text_style.dart';
 import '../../home/screens/CustomBottomNavBar.dart';
 import '../controller/ProfileController.dart';
+import 'EditProfileScreen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -42,9 +43,8 @@ class ProfileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,top: 15),
+                    padding: const EdgeInsets.only(left: 10, top: 15),
                     child: Column(
-
                       children: [
                         controller
                                     .userProfile
@@ -53,9 +53,11 @@ class ProfileScreen extends StatelessWidget {
                                     .isNotEmpty ==
                                 true
                             ? ClipOval(
-
                                 child: Image.network(
-                                  controller.userProfile.value!.profilePictureUrl,
+                                  controller
+                                      .userProfile
+                                      .value!
+                                      .profilePictureUrl,
                                   width: 70,
                                   height: 70,
                                   fit: BoxFit.cover,
@@ -75,7 +77,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                         const SizedBox(height: 8),
                         Text(
-                          controller.   userProfile.   value?.  name ?? "Loading...",
+                          controller.userProfile.value?.name ?? "Loading...",
                           style: AppTextStyle.mango50012dont,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -85,7 +87,9 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => EditProfileScreen());
+                    },
                     child: Text(
                       "Edit Profile",
                       style: AppTextStyle.mango50012dont,
