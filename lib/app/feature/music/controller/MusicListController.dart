@@ -46,19 +46,25 @@ class MusicListController extends GetxController {
 
   List<MusicModel> get filteredList {
     if (selectedTab.value == 'All') {
-      return musicList;
+      return musicList.toList();
     }
+
     if (selectedTab.value == 'Favorites') {
       return musicList.where((m) => favoriteIds.contains(m.id)).toList();
     }
+
     return musicList
         .where(
-          (m) => m.category.toLowerCase() == selectedTab.value.toLowerCase(),
+          (m) =>
+              m.category.trim().toLowerCase() ==
+              selectedTab.value.trim().toLowerCase(),
         )
         .toList();
   }
 
-  void changeTab(String tab) => selectedTab.value = tab;
+  void changeTab(String tab) {
+    selectedTab.value = tab;
+  }
 
   void toggleFavorite(int id) {
     if (favoriteIds.contains(id)) {
