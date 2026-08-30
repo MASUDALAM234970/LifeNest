@@ -19,7 +19,7 @@ class _GroundingScreenState extends State<GroundingScreen> {
   int currentPage = 0;
 
   Timer? _timer;
-  int remainingSeconds = 30;
+  int remainingSeconds = 5;
   bool canNext = false;
 
   final List<Widget> pages = const [Page1(), Page2(), Page3(), Page4()];
@@ -35,7 +35,7 @@ class _GroundingScreenState extends State<GroundingScreen> {
   void _startTimer() {
     _timer?.cancel();
 
-    remainingSeconds = 30;
+    remainingSeconds = 5;
     canNext = false;
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
